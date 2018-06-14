@@ -8,10 +8,15 @@ window.Popper = require('popper.js').default;
  * code may be modified to fit the specific needs of your application.
  */
 
-try {
-    window.$ = window.jQuery = require('jquery');
+// try {
+//     window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap');
+//     require('bootstrap');
+// } catch (e) {}
+
+try {
+    // window.$ = window.jQuery = require('jquery');
+    require('materialize-css');
 } catch (e) {}
 
 /**
