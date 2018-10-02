@@ -67,3 +67,7 @@ php artisan migrate
 > Usuários do *Homestead* devem executar esses comandos através da VM do *Homestead*.
 
 > Para testar se a aplicação está funcionando devidamente abra o bash no root da aplicação, execute o comando *php artisan serve* e acesse o endereço IP do host na porta 8000 através de seu navegador.
+
+## Links úteis:
+    * https://laravel.com/docs/5.7/blade
+    * 
