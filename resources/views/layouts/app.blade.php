@@ -31,17 +31,25 @@
 </head>
 
 <body>
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-        <div class="loader-section section-left"></div>
-        <div class="loader-section section-right"></div>
-    </div>
-    @yield('_partial/header')
-    <div class="wrapper">
-        @yield('_partial/left_sidebar')
-        @yield('content')
-    </div>
-    @yield('_partial/scripts')
+    @section('loader')
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+        </div>
+    @endsection
+        @include('_partial.header')
+    <div id="main">
+        <div class="wrapper">
+            {{--Se for login, não exibir left_sidebar--}}
+            @include('_partial/left_sidebar')
 
+            <section id="content">
+                @yield('content')
+            </section>
+
+        </div>
+    </div>
+    @include('_partial/scripts')
 </body>
 </html>

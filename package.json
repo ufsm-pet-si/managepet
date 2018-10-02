@@ -11,12 +11,11 @@
     },
     "devDependencies": {
         "axios": "^0.18",
+        "cross-env": "^5.1",
+        "laravel-mix": "^2.1.14",
+        "lodash": "^4.17.4",
         "materialize-css": "^1.0.0-beta",
         "popper.js": "^1.12",
-        "cross-env": "^5.1",
-        "laravel-mix": "^2.0",
-        "lodash": "^4.17.4",
-        "vue": "^2.5.7"
     },
     "dependencies": {}
 }
