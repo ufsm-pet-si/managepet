@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!--start container-->
 <div class="container">
   <div class="section">
@@ -16,24 +19,14 @@
               </tr>
             </thead>
             <tbody>
+            @foreach($activities as $key => $value)
               <tr>
-                <td>Divulga PET - Joaquim Assunção</td>
-                <td>Pesquisa</td>
-                <td>Divulga PET</td>
-                <td>26/09/2018</td>
+                <td>{{ $value->title }}</td>
+                <td>{{ $value->search_center }}</td>
+                <td>{{ $value->category }}</td>
+                <td>?</td>
               </tr>
-              <tr>
-                <td>GAPRO - Laboratório de Programação I</td>
-                <td>Ensino</td>
-                <td>GAPRO</td>
-                <td>27/09/2018</td>
-              </tr>
-              <tr>
-                <td>Café com Especialista - Rodrigo Comasseto</td>
-                <td>Ensino</td>
-                <td>Café com Especialista</td>
-                <td>17/10/2018</td>
-              </tr>
+            @endforeach
             </tbody>
           </table>
         </div>
@@ -68,12 +61,12 @@
     </div>
     <div class="row right">
       <div class="fixed-action-btn action-btn" id="form-atividades" >
-        <a href="#" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
+        <a href="/atividades/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
           <i class="material-icons">add</i>
         </a>
       </div>
     </div>
   </div>
 </div>
-
-<script type="text/javascript" src="js/custom-script.js"></script>
+@endsection
+{{--<script type="text/javascript" src="js/custom-script.js"></script>--}}

@@ -1,9 +1,13 @@
+@extends('layouts.app')
+
+@section('content')
 <!--start container-->
 <div class="container">
   <div class="section">
     <div class="divider"></div>
     <!--Basic Form-->
     <div id="basic-form" class="section">
+      <!-- if there are creation errors, they will show here -->
       <div class="row">
         <div class="col s12">
           <div id="flight-card" class="card">
@@ -13,16 +17,17 @@
               </div>
             </div>
             <div class="col s12" style="padding-top: 20px">
-              <form>
+              <form action="{{ route('atividades.store') }}" method="POST">
+                {{ csrf_field() }}
                 <div class="row">
                   <div class="input-field col s12">
-                    <input id="titulo-atividade" type="text" class="validate">
+                    <input id="titulo-atividade" type="text" name="titulo" class="validate">
                     <label for="titulo-atividade">Título</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <textarea id="descricao" class="materialize-textarea validate"></textarea>
+                    <textarea id="descricao" name="descricao" class="materialize-textarea validate"></textarea>
                     <label for="descricao">Descrição</label>
                   </div>
                 </div>
@@ -39,7 +44,7 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <input type="text" id="categoria" class="materialize-textarea validate">
+                    <input type="text" name="categoria" id="categoria" class="materialize-textarea validate">
                     <label for="categoria">Categoria</label>
                   </div>
                   <!--
@@ -88,3 +93,4 @@
     </div>
   </div>
 </div>
+@endsection
