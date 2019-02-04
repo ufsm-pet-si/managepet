@@ -38,6 +38,12 @@
             <div class="loader-section section-right"></div>
         </div>
     @endsection
+    @section('alerts')
+        <!-- used to show any messages -->
+        @if (Session::has('message'))
+            <div class="alert alert-info">{{ Session::get('message') }}</div>
+        @endif
+    @endsection
         @include('_partial.header')
     <div id="main">
         <div class="wrapper">
