@@ -15,7 +15,7 @@
         "laravel-mix": "^2.1.14",
         "lodash": "^4.17.4",
         "materialize-css": "^1.0.0-beta",
-        "popper.js": "^1.12",
+        "popper.js": "^1.12"
     },
     "dependencies": {}
 }
