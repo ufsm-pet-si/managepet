@@ -24,4 +24,5 @@ Route::get('/petianos_form', 'HomeController@petianos_form')->name('petianos_for
 //participants
 Route::get('/participantes', 'HomeController@participants_list')->name('participants');
 Route::get('/participants_form', 'HomeController@participants_form')->name('participants_form');
-
+//activities
+Route::resource('atividades', 'ActivityController');
