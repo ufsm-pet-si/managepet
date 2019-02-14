@@ -13,7 +13,7 @@
           <div id="flight-card" class="card">
             <div class="card-header blue accent-1">
               <div class="card-title">
-                <h5 class="flight-card-title center">Nova Atividade</h5>
+                <h5 class="flight-card-title center">Nova Edição de Atividade</h5>
               </div>
             </div>
             <div class="col s12" style="padding-top: 20px">
@@ -43,25 +43,23 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="input-field col s12">
-                    <input type="text" name="categoria" id="categoria" class="materialize-textarea validate">
-                    <label for="categoria">Categoria</label>
-                  </div>
-                  <!--
-                    <div class="input-field col s12">
-                      <select>
-                        <option value="" disabled selected>Escolha a categoria</option>
-                        <optgroup label="Ensino">
-                          <option value="gapro">GAPRO</option>
-                          <option value="cafe">Café com Especialista</option>
-                        </optgroup>
-                        <optgroup label="Pesquisa">
-                          <option value="divulga">DivulgaPET</option>
-                        </optgroup>
-                      </select>
-                      <label>Categoria da atividade</label>
-                    </div>
-                  -->
+                  <div class="input-field col s12 m6">
+                    <div class="col s6">
+                        <label>Categoria da atividade</label>
+                    </div> 
+                    <div class="col s6">
+                        <select id="category" name="category">
+                          <option value="" disabled selected>Escolha a categoria</option>
+                          <optgroup label="Ensino">
+                            <option value="gapro">GAPRO</option>
+                            <option value="cafe">Café com Especialista</option>
+                          </optgroup>
+                          <optgroup label="Pesquisa">
+                            <option value="divulga">DivulgaPET</option>
+                          </optgroup>
+                        </select>
+                    </div>  
+                  </div>            
                 </div>
                 <div class="row">
                   <div class="input-field col s3">
@@ -94,3 +92,5 @@
   </div>
 </div>
 @endsection
+
+<script type="text/javascript" src="js/custom-script.js"></script>

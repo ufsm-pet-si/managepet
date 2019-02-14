@@ -1,10 +1,6 @@
 $(document).ready(function () {
-  $(".item-menu").click(function () {
-    var page = $(this).attr('id');
-    $("#content").load(page + ".html");
-    $('.item-menu').removeClass('active');
-    $(this).addClass('active');
-  })
+
+  $('select').material_select();
 
   $(".action-btn").click(function () {
     var page = $(this).attr('id');

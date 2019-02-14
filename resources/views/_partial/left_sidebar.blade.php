@@ -55,11 +55,11 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
-                                    <li class="item-menu" id="list-atividades">
-                                        <a href="#">Edições</a>
+                                    <li class="item-menu">
+                                        <a href="{{'/atividades'}}" >Edições</a>
                                     </li>
-                                    <li class="item-menu" id="list-categorias">
-                                        <a href="#">Categorias</a>
+                                    <li class="item-menu">
+                                        <a href="{{'/categorias'}}">Categorias</a>
                                     </li>
                                 </ul>
                             </div>

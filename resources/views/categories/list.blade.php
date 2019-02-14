@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!--start container-->
 <div class="container">
   <div class="section">
@@ -59,7 +62,7 @@
     </div>
     <div class="row right">
       <div class="fixed-action-btn action-btn" id="form-categorias">
-        <a href="#" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
+        <a href="categorias/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
           <i class="material-icons">add</i>
         </a>
       </div>
@@ -67,4 +70,4 @@
   </div>
 </div>
 
-<script type="text/javascript" src="js/custom-script.js"></script>
+@endsection

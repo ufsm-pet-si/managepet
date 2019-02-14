@@ -37,8 +37,8 @@
                 <i class="material-icons">menu</i>
               </a>
               <ul>
-                <li class="action-btn" id="list-participantes">
-                  <a href="#" class="btn-floating yellow darken-1">
+                <li class="action-btn">
+                  <a href="{{'/participantes'}}" class="btn-floating yellow darken-1">
                     <i class="material-icons">check_box</i>
                   </a>
                 </li>
@@ -69,4 +69,3 @@
   </div>
 </div>
 @endsection
-{{--<script type="text/javascript" src="js/custom-script.js"></script>--}}
