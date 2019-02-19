@@ -12,39 +12,11 @@
                         </h1>
                     </li>
                 </ul>
-                <div class="header-search-wrapper hide-on-med-and-down">
-                    <i class="material-icons">search</i>
-                    <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Pesquisar" />
-                </div>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
+                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button">
                             Bem vindo(a) admin
-                            <span class="avatar-status avatar-online">
-                  <img src="{{asset('images/avatar/avatar-7.png')}}" alt="avatar">
-                  <i></i>
-                </span>
                         </a>
-                    </li>
-                </ul>
-                <!-- profile-dropdown -->
-                <ul id="profile-dropdown" class="dropdown-content">
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">face</i> Perfil</a>
-                    </li>
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">settings</i> Configurações</a>
-                    </li>
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">live_help</i> Ajuda</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#" class="grey-text text-darken-1">
-                            <i class="material-icons">keyboard_tab</i> Sair</a>
                     </li>
                 </ul>
             </div>

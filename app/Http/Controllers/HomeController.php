@@ -37,4 +37,10 @@ class HomeController extends Controller
     public function participants_form(){
         return view('participants/form');
     }
+    public function schedule(){
+        return view('schedule/index');
+    }
+    public function certificates(){
+        return view('certificates/index');
+    }
 }

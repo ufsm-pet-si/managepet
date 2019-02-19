@@ -12,7 +12,7 @@
                         <div class="row">
                             <div class="input-field">
                                 <input id="email" type="email" class="validate{{ $errors->has('email') ? ' invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-                                <label for="email">{{ __('E-Mail Address') }}</label>
+                                <label for="email">{{ __('Endereço de e-mail') }}</label>
                                 @if ($errors->has('email'))
                                     <span class="red-text">
                                         <strong>{{ $errors->first('email') }}</strong>
@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="input-field">
                                 <input id="password" type="password" class="validate{{ $errors->has('password') ? ' invalid' : '' }}" name="password" required>
-                                <label for="password">{{ __('Password') }}</label>
+                                <label for="password">{{ __('Senha') }}</label>
                                 @if ($errors->has('password'))
                                     <span class="red-text">
                                         <strong>{{ $errors->first('password') }}</strong>

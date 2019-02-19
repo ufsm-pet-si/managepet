@@ -1,28 +1,23 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ config('app.name') }}</title>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
-    <!-- CORE CSS-->
-    <link href="{{ asset('css/materialize.css') }} " type="text/css" rel="stylesheet">
-    <link href="{{ asset('css/style.css') }}" type="text/css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Materialize -->
+    <link href="{{ asset('vendors/materialize/materialize.css') }} " type="text/css" rel="stylesheet">
+    <link href="{{ asset('vendors/materialize/style.css') }}" type="text/css" rel="stylesheet">
+    <!-- Fullcalendar -->
+    <link href="{{ asset('vendors/fullcalendar/fullcalendar.min.css') }}" type="text/css" rel="stylesheet" />
+    <link href="{{ asset('vendors/fullcalendar/fullcalendar.print.min.css') }}" type="text/css" rel="stylesheet" media="print" />
     <!-- Custome CSS-->
     <link href="{{ asset('css/custom/custom.css') }}" type="text/css" rel="stylesheet">
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->

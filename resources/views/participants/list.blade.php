@@ -112,7 +112,7 @@
             </div>
             <div class="row right">
                 <div class="fixed-action-btn action-btn" id="form-participante">
-                    <a href="#" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
+                    <a href="participantes/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
                         <i class="material-icons">add</i>
                     </a>
                 </div>

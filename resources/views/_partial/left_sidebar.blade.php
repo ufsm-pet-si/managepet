@@ -6,25 +6,6 @@
                     <img src="images/avatar/avatar-7.png" alt="" class="circle responsive-img valign profile-image cyan">
                 </div>
                 <div class="col col s8 m8 l8">
-                    <ul id="profile-dropdown-nav" class="dropdown-content">
-                        <li>
-                            <a href="#" class="grey-text text-darken-1">
-                                <i class="material-icons">face</i> Perfil</a>
-                        </li>
-                        <li>
-                            <a href="#" class="grey-text text-darken-1">
-                                <i class="material-icons">settings</i> Configurações</a>
-                        </li>
-                        <li>
-                            <a href="#" class="grey-text text-darken-1">
-                                <i class="material-icons">live_help</i> Ajuda</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#" class="grey-text text-darken-1">
-                                <i class="material-icons">keyboard_tab</i> Sair</a>
-                        </li>
-                    </ul>
                     <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">John Doe
                         <i class="mdi-navigation-arrow-drop-down right"></i>
                     </a>
@@ -65,13 +46,13 @@
                             </div>
                         </li>
                         <li class="item-menu bold">
-                            <a href="#" class="waves-effect waves-cyan">
+                            <a href="{{'/certificados'}}" class="waves-effect waves-cyan">
                                 <i class="material-icons">archive</i>
                                 <span class="nav-text">Certificados</span>
                             </a>
                         </li>
                         <li class="item-menu bold">
-                            <a href="#" class="waves-effect waves-cyan">
+                            <a href="{{'/agenda'}}" class="waves-effect waves-cyan">
                                 <i class="material-icons">event_note</i>
                                 <span class="nav-text">Agenda</span>
                             </a>

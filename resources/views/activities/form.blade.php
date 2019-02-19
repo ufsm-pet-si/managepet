@@ -93,4 +93,3 @@
 </div>
 @endsection
 
-<script type="text/javascript" src="js/custom-script.js"></script>
