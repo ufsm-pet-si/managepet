@@ -15,16 +15,17 @@
                 <h5 class="flight-card-title center">Nova Categoria de Atividade</h5>
               </div>
             </div>
-            <form class="col s12" style="padding-top: 20px">
+            <form action="{{ route('categorias.store') }}" method="POST" class="col s12" style="padding-top: 20px">
+            {{ csrf_field() }}
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="categoria-atividade" type="text" class="validate">
+                  <input id="categoria-atividade" name="categoria" type="text" class="validate">
                   <label for="categoria-atividade">Categoria</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="descricao-categoria" class="materialize-textarea validate"></textarea>
+                  <textarea id="descricao-categoria" name="descricao" class="materialize-textarea validate"></textarea>
                   <label for="descricao-categoria">Descrição</label>
                 </div>
               </div>

@@ -18,21 +18,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Divulga PET</td>
-                <td>Pesquisa</td>
-                <td>Divulga PET</td>
-              </tr>
-              <tr>
-                <td>GAPRO</td>
-                <td>Ensino</td>
-                <td>GAPRO</td>
-              </tr>
-              <tr>
-                <td>Café com Especialista</td>
-                <td>Ensino</td>
-                <td>Café com Especialista</td>
-              </tr>
+              @foreach($categories as $key => $value)
+                <tr>
+                  <td>{{ $value->category }}</td>
+                  <td>{{ $value->search_center }}</td>
+                  <td>{{ $value->description }}</td>
+                </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
