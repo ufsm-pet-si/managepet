@@ -9,14 +9,15 @@
       <h4 class="header">Atividades</h4>
       <div class="row">
         <div class="col s12">
+        <div id="table-buttons" class="row"></div>
           <table class="layout display responsive-table bordered" id="table_activities">
             <thead>
               <tr>
                 <th>Título</th>
                 <th>Data</th>
-                <th>Ações</th>
-                <th>Eixo</th>
                 <th>Categoria</th>
+                <th>Ações</th>
+                <th>Descrição</th>
               </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
               <tr>
                 <td>{{ $value->title }}</td>
                 <td>{{ $value->date }}</td>
+                <td>{{ $value->category }}</td>
                 <td>
                     <ul>
                     <div class="col s2">
@@ -35,22 +37,21 @@
                       </div>
                     <div class="col s2">
                       <li class="action-btn">
-                        <a href="activities/show({{ $value->id }})" class="waves-effect btn-floating blue">
+                        <a href="atividades/show({{ $value->id }})" class="waves-effect btn-floating blue">
                           <i class="material-icons">edit</i>
                         </a>
                       </li>
                       </div>
                     <div class="col s2">
                       <li class="action-btn">
-                        <a href="activities/destroy({{ $value->id }})" class="waves-effect btn-floating red">
+                        <a href="atividades/destroy({{ $value->id }})" class="waves-effect btn-floating red">
                           <i class="material-icons">delete</i>
                         </a>
                       </li>
                       </div>
                     </ul>
                   </td>
-                <td>{{ $value->search_center }}</td>
-                <td>{{ $value->category }}</td>
+                <td>{{ $value->description }}</td>
               </tr>
             @endforeach
             </tbody>

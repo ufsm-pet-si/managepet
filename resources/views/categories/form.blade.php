@@ -32,11 +32,11 @@
               <div class="row">
                 <div class="col s12">
                   <label>Eixo</label>
-                  <input type="radio" name="eixo" value="ensino" id="ensino">
+                  <input type="radio" name="eixo" value="Ensino">
                   <label for="ensino">Ensino</label>
-                  <input type="radio" name="eixo" value="pesquisa" id="pesquisa">
+                  <input type="radio" name="eixo" value="Pesquisa">
                   <label for="pesquisa">Pesquisa</label>
-                  <input type="radio" name="eixo" value="extensao" id="extensao">
+                  <input type="radio" name="eixo" value="Extensão">
                   <label for="extensao">Extensão</label>
                 </div>
               </div>

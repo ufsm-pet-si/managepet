@@ -13,7 +13,7 @@
           <div id="flight-card" class="card">
             <div class="card-header blue accent-1">
               <div class="card-title">
-                <h5 class="flight-card-title center">Nova Edição de Atividade</h5>
+                <h5 class="flight-card-title center">Edição de Atividade</h5>
               </div>
             </div>
             <div class="col s12" style="padding-top: 20px">
@@ -21,20 +21,20 @@
                 {{ csrf_field() }}
                 <div class="row">
                   <div class="input-field col s12">
-                    <input id="titulo-atividade" type="text" name="titulo" class="validate">
+                    <input id="titulo-atividade" type="text" name="titulo">
                     <label for="titulo-atividade">Título</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="input-field col s12">
-                    <textarea id="descricao" name="descricao" class="materialize-textarea validate"></textarea>
+                    <textarea id="descricao" name="descricao" class="materialize-textarea"></textarea>
                     <label for="descricao">Descrição</label>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col s12 m6">
                   <label>Categoria</label>
-                    <select class="browser-default">
+                    <select id="categoria" name="categoria" class="browser-default">
                       <option value="" disabled selected>Escolha a categoria</option>
                       @foreach($categories as $key => $value)
                         <option value="{{ $value->category }}">{{ $value->category }}</option>
@@ -44,16 +44,16 @@
                 </div>
                 <div class="row">
                   <div class="input-field col s3">
-                    <input id="data" type="text" class="validate" />
+                    <input id="data" name="data" type="date">
                     <label for="data">Data</label>
                   </div>
                   <div class="input-field col s3">
-                    <input id="hora-inicio" type="text" class="validate" />
-                    <label for="hora-inicio">Hora início</label>
+                    <input id="hora" name="hora_inicio" type="text"/>
+                    <label for="hora">Hora início</label>
                   </div>
                   <div class="input-field col s3">
-                    <input id="duracao-total" type="text" class="validate" />
-                    <label for="duracao-total">Duração total</label>
+                    <input id="duracao" name="duracao" type="text"/>
+                    <label for="duracao">Duração total</label>
                   </div>
                 </div>
 

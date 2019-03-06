@@ -50,8 +50,10 @@ class ActivityController extends Controller
         // validate
         $rules = array(
             'titulo'    => 'required',
-            'eixo'      => 'required',
-            'categoria' => 'required'
+            'categoria' => 'required',
+            'data' => 'required',
+            'hora_inicio' => 'required',
+            'duracao' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -63,8 +65,10 @@ class ActivityController extends Controller
         Activity::create([
             'title'         => $request->input('titulo'),
             'description'   => $request->input('descricao'), 
-            'search_center' => $request->input('eixo'), 
-            'category'      => $request->input('categoria')
+            'category'      => $request->input('categoria'),
+            'date'      => $request->input('data'),
+            'start_time'      => $request->input('hora_inicio'),
+            'duration'      => $request->input('duracao')
         ]);
 
         // redirect
@@ -82,9 +86,10 @@ class ActivityController extends Controller
     {
         // get the activity
         $searchedActivity = Activity::find($activity);
-
-        // show the view and pass the nerd to it
-        return View::make('activities.form')->with('activity', $searchedActivity);
+        // get all categories
+        $categories = Category::all();
+        // load the create form (views/activities/form.blade.php)
+        return View::make('activities.form')->with('categories', $categories, 'activity', $searchedActivity);
     }
 
     /**
@@ -113,9 +118,11 @@ class ActivityController extends Controller
     {
         // validate
         $rules = array(
-            'titulo'       => 'required',
-            'eixo'         => 'required',
-            'categoria'    => 'required'
+            'titulo'    => 'required',
+            'categoria' => 'required',
+            'data' => 'required',
+            'hora_inicio' => 'required',
+            'duracao' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -127,8 +134,10 @@ class ActivityController extends Controller
         Activity::create([
             'title'         => $request->input('titulo'),
             'description'   => $request->input('descricao'), 
-            'search_center' => $request->input('eixo'), 
-            'category'      => $request->input('categoria')
+            'category'      => $request->input('categoria'),
+            'date'      => $request->input('data'),
+            'start_time'      => $request->input('hora_inicio'),
+            'duration'      => $request->input('duracao')
         ]);
 
         // redirect
