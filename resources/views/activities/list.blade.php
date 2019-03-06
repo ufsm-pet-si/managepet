@@ -8,54 +8,53 @@
     <div id="hoverable-table">
       <h4 class="header">Atividades</h4>
       <div class="row">
-        <div class="col s10">
-          <table class="highlitgh" id="lista_atividades">
+        <div class="col s12">
+          <table class="layout display responsive-table bordered" id="table_activities">
             <thead>
               <tr>
                 <th>Título</th>
+                <th>Data</th>
+                <th>Ações</th>
                 <th>Eixo</th>
                 <th>Categoria</th>
-                <th>Data</th>
               </tr>
             </thead>
             <tbody>
             @foreach($activities as $key => $value)
               <tr>
                 <td>{{ $value->title }}</td>
+                <td>{{ $value->date }}</td>
+                <td>
+                    <ul>
+                    <div class="col s2">
+                      <li class="action-btn">
+                        <a href="participants" class="waves-effect btn-floating orange">
+                          <i class="material-icons">check_box</i>
+                        </a>
+                      </li>
+                      </div>
+                    <div class="col s2">
+                      <li class="action-btn">
+                        <a href="activities/show({{ $value->id }})" class="waves-effect btn-floating blue">
+                          <i class="material-icons">edit</i>
+                        </a>
+                      </li>
+                      </div>
+                    <div class="col s2">
+                      <li class="action-btn">
+                        <a href="activities/destroy({{ $value->id }})" class="waves-effect btn-floating red">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </li>
+                      </div>
+                    </ul>
+                  </td>
                 <td>{{ $value->search_center }}</td>
                 <td>{{ $value->category }}</td>
-                <td>?</td>
               </tr>
             @endforeach
             </tbody>
           </table>
-        </div>
-        <div class="col s2 right">
-          <div style="position: relative; height: 70px;">
-            <div class="fixed-action-btn horizontal" style="position: absolute; display: inline-block; right: 60px;">
-              <a class="btn-floating btn-large red">
-                <i class="material-icons">menu</i>
-              </a>
-              <ul>
-                <li class="action-btn">
-                  <a href="{{'/participantes'}}" class="btn-floating yellow darken-1">
-                    <i class="material-icons">check_box</i>
-                  </a>
-                </li>
-                <li class="action-btn">
-                  <a href="#" class="btn-floating red">
-                    <i class="material-icons">delete</i>
-                  </a>
-                </li>
-                <li class="action-btn">
-                  <a href="#" class="btn-floating blue">
-                    <i class="material-icons">edit</i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          </ul>
         </div>
       </div>
     </div>
@@ -69,3 +68,4 @@
   </div>
 </div>
 @endsection
+

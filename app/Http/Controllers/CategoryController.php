@@ -21,7 +21,6 @@ class CategoryController extends Controller
         // get all categories
         $categories = Category::all();
         // load the views and pass the categories
-        // return view('categories.index', compact('categories'));
         return View::make('categories.list')->with('categories', $categories);
     }
 

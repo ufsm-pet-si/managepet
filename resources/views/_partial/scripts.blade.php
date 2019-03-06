@@ -18,6 +18,14 @@
 <script type="text/javascript" src="{{ asset('js/custom-script.js') }}"></script>
 <!-- custom schedule script -->
 <script type="text/javascript" src="{{ asset('js/schedule-script.js') }}"></script>
+<!-- datatable scripts -->
+<script src="{{ asset('vendors/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('vendors/datatables/datetime-moment.js') }}"></script>
+<script src="{{ asset('js/init-datatable.js') }}"></script>
+<script src="{{ asset('js/list-petianos.js') }}"></script>
+<script src="{{ asset('js/list-participants.js') }}"></script>
+<script src="{{ asset('js/list-categories.js') }}"></script>
+<script src="{{ asset('js/list-activities.js') }}"></script>
 
 {{----}}
 {{----}}

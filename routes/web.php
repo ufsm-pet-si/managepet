@@ -19,8 +19,7 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 //petianos
-Route::get('/petianos', 'HomeController@petianos_list')->name('petiano');
-Route::get('/petianos/create', 'HomeController@petianos_form')->name('petianos_form');
+Route::resource('petianos', 'PetianoController');
 //participants
 Route::get('/participantes', 'HomeController@participants_list')->name('participants');
 Route::get('/participantes/create', 'HomeController@participants_form')->name('participants_form');

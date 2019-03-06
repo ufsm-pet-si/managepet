@@ -6,56 +6,43 @@
             <div id="hoverable-table">
                 <h4 class="header">Petianos</h4>
                 <div class="row">
-                    <div class="col s10">
-                        <table class="highlitgh" id="lista_petianos">
+                    <div class="col s12">
+                        <table class="layout display responsive-table bordered" id="table_petianos">
                             <thead>
                             <tr>
                                 <th>Nome</th>
+                                <th>Ações</th>
                                 <th>E-mail</th>
-                                <th>Usuário</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Isabella</td>
-                                <td>isakis@inf.ufsm.br</td>
-                                <td>isakis</td>
-                            </tr>
-                            <tr>
-                                <td>Joel</td>
-                                <td>jfsilva@inf.ufsm.br</td>
-                                <td>jfsilva</td>
-                            </tr>
-                            <tr>
-                                <td>João Vitor</td>
-                                <td>jvmeller@inf.ufsm.br</td>
-                                <td>jvmeller</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col s2 right">
-                        <div style="position: relative; height: 70px;">
-                            <div class="fixed-action-btn horizontal"
-                                 style="position: absolute; display: inline-block; right: 60px;">
-                                <a class="btn-floating btn-large red">
-                                    <i class="material-icons">menu</i>
-                                </a>
-                                <ul>
-                                    <li class="action-btn">
-                                        <a href="#" class="btn-floating red">
-                                            <i class="material-icons">delete</i>
-                                        </a>
-                                    </li>
-                                    <li class="action-btn">
-                                        <a href="#" class="btn-floating blue">
+                                @foreach($petianos as $key => $value)
+                                <tr>
+                                    <td>{{ $value->name }}</td>
+                                    <td>
+                                        <ul>
+                                        <div class="col s2">
+                                        <li class="action-btn">
+                                            <a href="petianos/show({{ $value->id }})" class="waves-effect btn-floating blue">
                                             <i class="material-icons">edit</i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        </ul>
+                                            </a>
+                                        </li>
+                                        </div>
+                                        <div class="col s2">
+                                        <li class="action-btn">
+                                            <a href="petianos/destroy({{ $value->id }})" class="waves-effect btn-floating red">
+                                            <i class="material-icons">delete</i>
+                                            </a>
+                                        </li>
+                                        </div>
+                                        </ul>
+                                    </td>
+                                    <td>{{ $value->email }}</td>
+                                </tr>
+                                @endforeach
+                                </tbody>
+
+                        </table>
                     </div>
                 </div>
             </div>

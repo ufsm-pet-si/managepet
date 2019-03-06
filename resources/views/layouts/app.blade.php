@@ -18,6 +18,8 @@
     <!-- Fullcalendar -->
     <link href="{{ asset('vendors/fullcalendar/fullcalendar.min.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('vendors/fullcalendar/fullcalendar.print.min.css') }}" type="text/css" rel="stylesheet" media="print" />
+    <!-- Datatable -->
+    <link href="{{ asset('vendors/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css"/>
     <!-- Custome CSS-->
     <link href="{{ asset('css/custom/custom.css') }}" type="text/css" rel="stylesheet">
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->

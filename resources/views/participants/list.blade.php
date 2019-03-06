@@ -7,8 +7,8 @@
             <div id="hoverable-table">
                 <h4 class="header">Participantes Atividade</h4>
                 <div class="row">
-                    <div class="col s10">
-                        <table class="highlitgh" id="lista_atividades">
+                    <div class="col s12">
+                        <table class="layout display responsive-table bordered" id="table_participants">
                             <thead>
                             <tr>
                                 <th>Nome</th>
@@ -78,28 +78,6 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col s2 right">
-                        <div style="position: relative; height: 70px;">
-                            <div class="fixed-action-btn horizontal"
-                                 style="position: absolute; display: inline-block; right: 60px;">
-                                <a class="btn-floating btn-large red">
-                                    <i class="material-icons">menu</i>
-                                </a>
-                                <ul>
-                                    <li class="action-btn">
-                                        <a href="#" class="btn-floating red">
-                                            <i class="material-icons">delete</i>
-                                        </a>
-                                    </li>
-                                    <li class="action-btn">
-                                        <a href="#" class="btn-floating blue">
-                                            <i class="material-icons">edit</i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="row" style="padding-top: 20px;">
@@ -120,4 +98,3 @@
         </div>
     </div>
 @endsection
-{{--<script type="text/javascript" src="js/custom-script.js"></script>--}}

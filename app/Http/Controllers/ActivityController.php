@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\Category;
 use View;
 use Session;
 use Illuminate\Support\Facades\Validator;
@@ -32,8 +33,10 @@ class ActivityController extends Controller
      */
     public function create()
     {
+        // get all categories
+        $categories = Category::all();
         // load the create form (views/activities/form.blade.php)
-        return View::make('activities.form');
+        return View::make('activities.form')->with('categories', $categories);
     }
 
     /**

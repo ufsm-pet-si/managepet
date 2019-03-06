@@ -32,33 +32,14 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col s12">
-                    <label>Eixo</label>
-                    <input type="radio" name="eixo" value="ensino" id="ensino">
-                    <label for="ensino">Ensino</label>
-                    <input type="radio" name="eixo" value="pesquisa" id="pesquisa">
-                    <label for="pesquisa">Pesquisa</label>
-                    <input type="radio" name="eixo" value="extensao" id="extensao">
-                    <label for="extensao">Extensão</label>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="input-field col s12 m6">
-                    <div class="col s6">
-                        <label>Categoria da atividade</label>
-                    </div> 
-                    <div class="col s6">
-                        <select id="category" name="category">
-                          <option value="" disabled selected>Escolha a categoria</option>
-                          <optgroup label="Ensino">
-                            <option value="gapro">GAPRO</option>
-                            <option value="cafe">Café com Especialista</option>
-                          </optgroup>
-                          <optgroup label="Pesquisa">
-                            <option value="divulga">DivulgaPET</option>
-                          </optgroup>
-                        </select>
-                    </div>  
+                  <div class="col s12 m6">
+                  <label>Categoria</label>
+                    <select class="browser-default">
+                      <option value="" disabled selected>Escolha a categoria</option>
+                      @foreach($categories as $key => $value)
+                        <option value="{{ $value->category }}">{{ $value->category }}</option>
+                        @endforeach
+                    </select>
                   </div>            
                 </div>
                 <div class="row">
@@ -91,5 +72,6 @@
     </div>
   </div>
 </div>
-@endsection
 
+
+@endsection
