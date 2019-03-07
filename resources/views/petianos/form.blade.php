@@ -15,16 +15,17 @@
                 <h4 class="flight-card-title center">Novo(a) Petiano</h4>
               </div>
             </div>
-            <form class="col s12">
+            <form action="<?php echo e(route('petianos.store')); ?>" method="POST" class="col s12">
+              {{ csrf_field() }}
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="nome-petiano" type="text" class="validate">
+                  <input id="nome-petiano" name="name" type="text" class="validate">
                   <label for="nome-petiano">Nome</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="email-petiano" type="email" class="validate">
+                  <input id="email-petiano" name="email" type="email" class="validate">
                   <label for="email-petiano">Email</label>
                 </div>
               </div>
@@ -36,13 +37,13 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="senha" type="password" class="validate">
+                  <input id="senha" name="password" type="password" class="validate">
                   <label for="senha">Senha</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="rep_senha" type="password" class="validate">
+                  <input id="rep_senha" name="password" type="password" class="validate">
                   <label for="rep_senha">Repetir Senha</label>
                 </div>
               </div>
