@@ -7,6 +7,7 @@
                 <h4 class="header">Petianos</h4>
                 <div class="row">
                     <div class="col s12">
+                    <div id="table-buttons" class="row"></div>
                         <table class="layout display responsive-table bordered" id="table_petianos">
                             <thead>
                             <tr>
