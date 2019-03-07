@@ -30,7 +30,7 @@
                     <ul>
                     <div class="col s2">
                       <li class="action-btn">
-                        <a href="participants" class="waves-effect btn-floating orange">
+                        <a href="participantes/show({{ $value->id }})" class="waves-effect btn-floating orange">
                           <i class="material-icons">check_box</i>
                         </a>
                       </li>

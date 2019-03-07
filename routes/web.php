@@ -21,8 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //petianos
 Route::resource('petianos', 'PetianoController');
 //participants
-Route::get('/participantes', 'HomeController@participants_list')->name('participants');
-Route::get('/participantes/create', 'HomeController@participants_form')->name('participants_form');
+Route::resource('participantes', 'ParticipantController');
 //activities - editions
 Route::resource('atividades', 'ActivityController');
 //activities - categories

@@ -42,21 +42,27 @@
                     </select>
                   </div>            
                 </div>
-                <div class="row">
-                  <div class="input-field col s3">
-                    <input id="data" name="data" type="date">
-                    <label for="data">Data</label>
+                  <div id="list_dates">
+                  <h5>Data(s) da atividade</h5>
+                    <div class="row">
+                      <div class="input-field col s3">
+                        <input name="data" type="date">
+                      </div>
+                      <div class="input-field col s3">
+                        <input name="hora_inicio" type="text"/>
+                        <label for="hora">Hora início</label>
+                      </div>
+                      <div class="input-field col s3">
+                        <input name="duracao" type="text"/>
+                        <label for="duracao">Duração total</label>
+                      </div>
+                      <div class="input-field col s3">
+                        <button type="button" class="btn green waves-effect" id="add_date">
+                            <i class="material-icons">add</i>
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div class="input-field col s3">
-                    <input id="hora" name="hora_inicio" type="text"/>
-                    <label for="hora">Hora início</label>
-                  </div>
-                  <div class="input-field col s3">
-                    <input id="duracao" name="duracao" type="text"/>
-                    <label for="duracao">Duração total</label>
-                  </div>
-                </div>
-
                 <div class="row" style="padding-bottom: 20px;">
                   <div class="col s12">
                     <button class="btn blue accent-2 waves-effect waves-light right" type="submit" name="action">Salvar

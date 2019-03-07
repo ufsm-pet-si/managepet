@@ -25,12 +25,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function participants_list(){
-        return view('participants/list');
-    }
-    public function participants_form(){
-        return view('participants/form');
-    }
     public function schedule(){
         return view('schedule/index');
     }
