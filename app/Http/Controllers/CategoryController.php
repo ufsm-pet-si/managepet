@@ -41,12 +41,13 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         // validate
         $rules = array(
-            'categoria' => 'required',
+            'nome'      => 'required',
             'eixo'      => 'required',
+            'tipo'      => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -56,9 +57,10 @@ class CategoryController extends Controller
 
         // store
         Category::create([
-            'category'      => $request->input('categoria'),
-            'description'   => $request->input('descricao'), 
-            'search_center' => $request->input('eixo'), 
+            'name'          => Input::get('nome'),
+            'description'   => Input::get('descricao'), 
+            'search_center' => Input::get('eixo'), 
+            'type'          => Input::get('tipo')
         ]);
 
         // redirect
@@ -75,9 +77,9 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         // get the category
-        $searchedCategory = Category::find($category);
+        $searchedCategory = Category::find($category)->first();
 
-        // show the view and pass the nerd to it
+        // show the view and pass the category to it
         return View::make('categories.form')->with('category', $searchedCategory);
     }
 
@@ -87,10 +89,10 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
         // get the category
-        $searchedCategory = Category::find($category);
+        $searchedCategory = Category::find($id)->first();
 
         // show the edit form and pass the category
         return View::make('categories.form')->with('category', $searchedCategory);     
@@ -103,12 +105,13 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update($id)
     {
         // validate
         $rules = array(
-            'categoria'    => 'required',
+            'nome'         => 'required',
             'eixo'         => 'required',
+            'tipo'         => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -117,15 +120,17 @@ class CategoryController extends Controller
             return Redirect::to('categories.form', ['category' => $category])->withErrors($validator);
         
         // store
-        Category::create([
-            'category'      => $request->input('categoria'),
-            'description'   => $request->input('descricao'), 
-            'search_center' => $request->input('eixo'), 
-        ]);
+        $category = Category::find($id);
+
+        $category->name          = Input::get('nome');
+        $category->description   = Input::get('descricao');
+        $category->search_center = Input::get('eixo');
+        $category->type          = Input::get('tipo');
+        $category->save();
 
         // redirect
         Session::flash('message', 'Categoria atualizada com sucesso!');
-        return Redirect::to('categories.list');
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -134,14 +139,14 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
         // delete
-        $searchedCategory = Category::find($category);
+        $searchedCategory = Category::find($id);
         $searchedCategory->delete();
 
         // redirect
         Session::flash('message', 'Categoria removida com sucesso!');
-        return Redirect::to('categories.list');  
+        return redirect()->route('categorias.index');
     }
 }
