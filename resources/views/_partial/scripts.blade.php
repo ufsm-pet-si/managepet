@@ -1,9 +1,8 @@
 
 <!-- jQuery Library -->
-<script type="text/javascript" src="{{ asset('/vendors/jquery/jquery.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/vendors/jquery/jquery-ui.min.js') }}"></script>
 <!--app js-->
-<script src="{{ asset('js/app.js') }}" defer></script>
+<!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 <!--materialize js-->
 <script type="text/javascript" src="{{ asset('vendors/materialize/materialize.min.js') }}"></script>
 <!--scrollbar-->
@@ -21,26 +20,33 @@
 <!-- datatable scripts -->
 <script src="{{ asset('vendors/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('vendors/datatables/datetime-moment.js') }}"></script>
+<!-- TODO: refatoracao -> mover cada script para a pagina que necessita dele (nao ha necessidade de carregar todos aqui) -->
 <script src="{{ asset('js/init-datatable.js') }}"></script>
-<script src="{{ asset('js/list-petianos.js') }}"></script>
-<script src="{{ asset('js/list-participants.js') }}"></script>
-<script src="{{ asset('js/list-categories.js') }}"></script>
-<script src="{{ asset('js/list-activities.js') }}"></script>
+@switch(Request::path())
+    @case('categorias')
+        <script src="{{ asset('js/list-categories.js') }}"></script>
+        @break
+    @case('petianos')
+        <script src="{{ asset('js/list-petianos.js') }}"></script>
+        @break
+    @case('participantes')
+        <script src="{{ asset('js/list-participants.js') }}"></script>
+        @break
+    @case('atividades')
+        <script src="{{ asset('js/list-activities.js') }}"></script>
+        @break                
+@endswitch
 
-{{----}}
-{{----}}
 <script>
-    // inicialização do painel de navegação lateral para dispositivos móveis
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.sidenav');
-        var instances = M.Sidenav.init(elems);
-    });
-</script>
-
-<script>
-    // inicialização do dropdown do menu do usuário
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.dropdown-trigger');
-        var instances = M.Dropdown.init(elems);
+    $(function() {
+        // inicialização do painel de navegação lateral para dispositivos móveis
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.sidenav');
+            var instances = M.Sidenav.init(elems);
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('.dropdown-trigger');
+            var instances = M.Dropdown.init(elems);
+        });
     });
 </script>

@@ -25,6 +25,9 @@
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="{{ asset('vendors/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('vendors/flag-icon/css/flag-icon.min.css') }}" type="text/css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="{{ asset('/vendors/jquery/jquery.min.js') }}"></script>
 </head>
 
 <body>
@@ -41,7 +44,7 @@
             <div class="alert alert-info">{{ Session::get('message') }}</div>
         @endif
     @endsection
-        @include('_partial.header')
+    @include('_partial.header')
     <div id="main">
         <div class="wrapper">
             {{--Se for login, não exibir left_sidebar--}}
