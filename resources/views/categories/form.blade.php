@@ -15,31 +15,42 @@
                 <h5 class="flight-card-title center">Nova Categoria de Atividade</h5>
               </div>
             </div>
-            <form action="{{ route('categorias.store') }}" method="POST" class="col s12" style="padding-top: 20px">
-            {{ csrf_field() }}
+              @if(isset($category))
+                <form action="{{ route('categorias.update', $category['id']) }}" method="POST" class="col s12" style="padding-top: 20px">
+                {{ method_field('PUT') }}
+              @else
+                <form action="{{ route('categorias.store') }}" method="POST" class="col s12" style="padding-top: 20px">
+              @endif
+              {{ csrf_field() }}
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="categoria-atividade" name="categoria" type="text" class="validate">
-                  <label for="categoria-atividade">Categoria</label>
+                  <input id="nome-categoria" name="nome" type="text" class="validate" value="{{ isset($category) ? $category->name : ''}}">
+                  <label for="nome-categoria">Nome da categoria</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="descricao-categoria" name="descricao" class="materialize-textarea validate"></textarea>
+                  <textarea id="descricao-categoria" name="descricao" class="materialize-textarea validate">{{ isset($category) ? $category->description : ''}}</textarea>
                   <label for="descricao-categoria">Descrição</label>
                 </div>
               </div>
               <div class="row">
-                <div class="col s12">
-                  <label>Eixo</label>
-                  <input type="radio" name="eixo" value="Ensino">
+                <div class="col s12 m6">Eixo:
+                  <input id="ensino" type="radio" name="eixo" value="Ensino" checked>
                   <label for="ensino">Ensino</label>
-                  <input type="radio" name="eixo" value="Pesquisa">
+                  <input id="pesquisa" type="radio" name="eixo" value="Pesquisa">
                   <label for="pesquisa">Pesquisa</label>
-                  <input type="radio" name="eixo" value="Extensão">
+                  <input id="extensao" type="radio" name="eixo" value="Extensão">
                   <label for="extensao">Extensão</label>
                 </div>
-              </div>
+                <br/><br/>
+                <div class="col s12 m6">Tipo de atividade:
+                  <input id="externa" type="radio" name="tipo" value="Externa" checked>
+                  <label for="externa">Externa</label>
+                  <input id="interna" type="radio" name="tipo" value="Interna">
+                  <label for="interna">Interna</label>
+                </div>
+              </div>              
               <div class="row" style="padding-bottom: 20px;">
                 <div class="col s12">
                   <button class="btn blue accent-2 waves-effect waves-light right" type="submit" name="action">Salvar
@@ -55,4 +66,12 @@
   </div>
 </div>
 </div>
+@if(isset($category))
+  <script>
+    $(function() {
+      $(":radio[name='eixo'][value='{{ $category->search_center }}']").prop("checked", true);
+      $(":radio[name='tipo'][value='{{ $category->type }}']").prop("checked", true);
+    });
+  </script>
+@endif
 @endsection

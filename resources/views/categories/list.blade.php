@@ -13,35 +13,42 @@
           <table class="layout display responsive-table bordered" id="table_categories">
             <thead>
               <tr>
-                <th>Categoria</th>
+                <th>Nome</th>
                 <th>Eixo</th>
+                <th>Tipo</th>
                 <th>Ações</th>
-                <th>Descrição</th>
+                <th class="none">Descrição</th>
               </tr>
             </thead>
             <tbody>
               @foreach($categories as $key => $value)
                 <tr>
-                  <td>{{ $value->category }}</td>
+                  <td>{{ $value->name }}</td>
                   <td>{{ $value->search_center }}</td>
+                  <td>{{ $value->type }}</td>
                   <td>
                     <ul>
-                    <div class="col s2">
+                    <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
                       <li class="action-btn">
-                        <a href="categorias/show({{ $value->id }})" class="waves-effect btn-floating blue">
+                        <a href="{{ route('categorias.edit', $value->id) }}" class="waves-effect btn-floating blue">
                           <i class="material-icons">edit</i>
                         </a>
                       </li>
                     </div>
-                    <div class="col s2">
+                    <div class="col s2" style="margin-top:-5px !important;">
                       <li class="action-btn">
-                        <a href="categorias/destroy({{ $value->id }})" class="waves-effect btn-floating red">
-                          <i class="material-icons">delete</i>
-                        </a>
+                        <form action="{{ route('categorias.destroy', $value->id) }}" method="POST">
+                          {{ method_field('DELETE') }}
+                          {{ csrf_field() }}
+                          <button type="submit" class="waves-effect btn-floating red">
+                            <i class="material-icons">delete</i>
+                          </button>
+                        </form>
                       </li>
                       </div>
                     </ul>
                   </td>
+                  {{--<td>{{ str_limit($value->description, $limit = 200, $end = '...') }}</td>--}}
                   <td>{{ $value->description }}</td>
                 </tr>
               @endforeach
@@ -59,5 +66,4 @@
     </div>
   </div>
 </div>
-
 @endsection
