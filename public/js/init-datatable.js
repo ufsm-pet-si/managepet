@@ -48,7 +48,7 @@ function initDataTable($table, nameSing, namePlural) {
 
   // Datatable select issues fix (init and on click)
   $('select').addClass("browser-default");
-  $('select').formSelect();
+  $("select").material_select();
   $("select").change(function() {
     var t = this;
     var content = $(this).siblings('ul').detach();

@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  $('select').formSelect();
+  $('select').material_select();
   
   document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.fixed-action-btn');
