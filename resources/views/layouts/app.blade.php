@@ -25,7 +25,8 @@
     <!-- INCLUDED PLUGIN CSS ON THIS PAGE -->
     <link href="{{ asset('vendors/perfect-scrollbar/perfect-scrollbar.css') }}" type="text/css" rel="stylesheet">
     <link href="{{ asset('vendors/flag-icon/css/flag-icon.min.css') }}" type="text/css" rel="stylesheet">
-
+    <!-- jQuery Toast -->
+    <link href="{{ asset('vendors/jquery/jquery.toast.min.css') }}" type="text/css" rel="stylesheet" />
     <!-- jQuery -->
     <script type="text/javascript" src="{{ asset('/vendors/jquery/jquery.min.js') }}"></script>
 </head>
@@ -38,12 +39,6 @@
             <div class="loader-section section-right"></div>
         </div>
     @endsection
-    @section('alerts')
-        <!-- used to show any messages -->
-        @if (Session::has('message'))
-            <div class="alert alert-info">{{ Session::get('message') }}</div>
-        @endif
-    @endsection
     @include('_partial.header')
     <div id="main">
         <div class="wrapper">
@@ -53,7 +48,6 @@
             <section id="content">
                 @yield('content')
             </section>
-
         </div>
     </div>
     @include('_partial/scripts')
