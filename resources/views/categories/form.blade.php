@@ -12,7 +12,7 @@
           <div id="flight-card" class="card">
             <div class="card-header blue accent-1">
               <div class="card-title">
-                <h5 class="flight-card-title center">Nova Categoria de Atividade</h5>
+                <h5 class="flight-card-title center">{{ isset($category) ? 'Editar Categoria da Atividade' : 'Nova Categoria de Atividade' }}</h5>
               </div>
             </div>
               @if(isset($category))
