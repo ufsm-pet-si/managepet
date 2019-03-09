@@ -1,6 +1,8 @@
 
 <!-- jQuery Library -->
-<script type="text/javascript" src="{{ asset('/vendors/jquery/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendors/jquery/jquery-ui.min.js') }}"></script>
+<!-- jQuery Toast -->
+<script type="text/javascript" src="{{ asset('vendors/jquery/jquery.toast.min.js') }}"></script>
 <!--app js-->
 <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 <!--materialize js-->
@@ -10,9 +12,9 @@
 <!--plugins.js - Some Specific JS codes for Plugin Settings-->
 <script type="text/javascript" src="{{ asset('js/plugins.js') }}"></script>
 <!-- Moment.js and Fullcalendar -->
-<script src="{{ asset('/vendors/moment/moment.min.js') }}"></script>
+<script src="{{ asset('vendors/moment/moment.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('vendors/fullcalendar/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('/vendors/moment/pt-br.js') }}"></script>
+<script src="{{ asset('vendors/moment/pt-br.js') }}"></script>
 <!--custom-script.js - Add your own theme custom JS-->
 <script type="text/javascript" src="{{ asset('js/custom-script.js') }}"></script>
 <!-- custom schedule script -->
@@ -39,6 +41,22 @@
 
 <script>
     $(function() {
+        @if (Session::has('message'))
+            <!-- used to show any messages -->
+            const mapHeaders = {
+                'success': 'Sucesso',
+                'error': 'Erro',
+                'warning': 'Atenção',
+                'information': 'Alerta'
+            }
+            $.toast({
+                heading: mapHeaders['{{ Session::get('message.type') }}'],
+                text: '{{ Session::get('message.text') }}',
+                showHideTransition: 'slide',
+                icon: '{{ Session::get('message.type') }}'
+            });
+        @endif
+        
         // inicialização do painel de navegação lateral para dispositivos móveis
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.sidenav');

@@ -40,7 +40,7 @@
                                         <a href="{{'/atividades'}}" >Edições</a>
                                     </li>
                                     <li class="item-menu">
-                                        <a href="{{'/categorias'}}">Categorias</a>
+                                        <a href="{{'/categories'}}">Categorias</a>
                                     </li>
                                 </ul>
                             </div>
