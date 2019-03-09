@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use View;
 use Session;
-use Illuminate\Support\Facades\Validator;
+use Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 
@@ -41,31 +41,20 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request, Category $category)
     {
-        // validate
-        $rules = array(
-            'nome'      => 'required',
-            'eixo'      => 'required',
-            'tipo'      => 'required'
-        );
-        $validator = Validator::make(Input::all(), $rules);
-
-        // process the validation
-        if ($validator->fails()) 
-            return redirect()->route('categorias.create')->withErrors($validator);
-
-        // store
-        Category::create([
-            'name'          => Input::get('nome'),
-            'description'   => Input::get('descricao'), 
-            'search_center' => Input::get('eixo'), 
-            'type'          => Input::get('tipo')
+        $request->validate([
+            'name'          => 'required',
+            'search_center' => 'required',
+            'type'          => 'required'
         ]);
 
+        // store
+        Category::create($request->all());
+
         // redirect
-        Session::flash('message', 'Categoria criada com sucesso!');
-        return redirect()->route('categorias.index');
+        Session::flash('message', ['text'=>"Categoria criada com sucesso!", 'type'=>"success"]);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -92,7 +81,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         // get the category
-        $searchedCategory = Category::find($id)->first();
+        $searchedCategory = Category::find($id);
 
         // show the edit form and pass the category
         return View::make('categories.form')->with('category', $searchedCategory);     
@@ -105,32 +94,20 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, Category $category)
     {
-        // validate
-        $rules = array(
-            'nome'         => 'required',
-            'eixo'         => 'required',
-            'tipo'         => 'required'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+        $request->validate([
+            'name'          => 'required',
+            'search_center' => 'required',
+            'type'          => 'required'
+        ]);
 
-        // process the validation
-        if ($validator->fails()) 
-            return Redirect::to('categories.form', ['category' => $category])->withErrors($validator);
-        
         // store
-        $category = Category::find($id);
-
-        $category->name          = Input::get('nome');
-        $category->description   = Input::get('descricao');
-        $category->search_center = Input::get('eixo');
-        $category->type          = Input::get('tipo');
-        $category->save();
+        $category->update($request->all());
 
         // redirect
-        Session::flash('message', 'Categoria atualizada com sucesso!');
-        return redirect()->route('categorias.index');
+        Session::flash('message', ['text'=>"Categoria atualizada com sucesso!", 'type'=>"success"]);
+        return redirect()->route('categories.index');
     }
 
     /**
@@ -139,14 +116,13 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
         // delete
-        $searchedCategory = Category::find($id);
-        $searchedCategory->delete();
+        $category->delete();
 
         // redirect
-        Session::flash('message', 'Categoria removida com sucesso!');
-        return redirect()->route('categorias.index');
+        Session::flash('message', ['text'=>"Categoria removida com sucesso!", 'type'=>"success"]);
+        return redirect()->route('categories.index');
     }
 }
