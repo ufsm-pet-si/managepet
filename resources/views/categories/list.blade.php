@@ -17,7 +17,7 @@
                 <th>Eixo</th>
                 <th>Tipo</th>
                 <th>Ações</th>
-                <th class="none">Descrição</th>
+                <th class="none">Descrição:</th>
               </tr>
             </thead>
             <tbody>
@@ -30,14 +30,14 @@
                     <ul>
                     <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
                       <li class="action-btn">
-                        <a href="{{ route('categorias.edit', $value->id) }}" class="waves-effect btn-floating blue">
+                        <a href="{{ route('categories.edit', $value->id) }}" class="waves-effect btn-floating blue">
                           <i class="material-icons">edit</i>
                         </a>
                       </li>
                     </div>
                     <div class="col s2" style="margin-top:-5px !important;">
                       <li class="action-btn">
-                        <form action="{{ route('categorias.destroy', $value->id) }}" method="POST">
+                        <form action="{{ route('categories.destroy', $value->id) }}" method="POST">
                           {{ method_field('DELETE') }}
                           {{ csrf_field() }}
                           <button type="submit" class="waves-effect btn-floating red">
@@ -49,7 +49,7 @@
                     </ul>
                   </td>
                   {{--<td>{{ str_limit($value->description, $limit = 200, $end = '...') }}</td>--}}
-                  <td>{{ $value->description }}</td>
+                  <td>{{ $value->description ? $value->description : "N/A"  }}</td>
                 </tr>
               @endforeach
             </tbody>
@@ -59,7 +59,7 @@
     </div>
     <div class="row right">
       <div class="fixed-action-btn action-btn">
-        <a href="categorias/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
+        <a href="categories/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
           <i class="material-icons">add</i>
         </a>
       </div>
