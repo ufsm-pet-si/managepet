@@ -63,12 +63,12 @@ class ActivityController extends Controller
 
         // store
         Activity::create([
-            'title'         => $request->input('titulo'),
-            'description'   => $request->input('descricao'), 
-            'category'      => $request->input('categoria'),
-            'date'      => $request->input('data'),
-            'start_time'      => $request->input('hora_inicio'),
-            'duration'      => $request->input('duracao')
+            'title'         => Input::get('titulo'),
+            'description'   => Input::get('descricao'), 
+            'category'      => Input::get('categoria'),
+            'date'      => Input::get('data'),
+            'start_time'      => Input::get('hora_inicio'),
+            'duration'      => Input::get('duracao')
         ]);
 
         // redirect
@@ -85,10 +85,10 @@ class ActivityController extends Controller
     public function show(Activity $activity)
     {
         // get the activity
-        $searchedActivity = Activity::find($activity);
+        $searchedActivity = Activity::find($activity)->first();
         // get all categories
         $categories = Category::all();
-        // load the create form (views/activities/form.blade.php)
+        // load the edit form (views/activities/form.blade.php)
         return View::make('activities.form')->with('categories', $categories, 'activity', $searchedActivity);
     }
 
@@ -98,13 +98,14 @@ class ActivityController extends Controller
      * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function edit(Activity $activity)
+    public function edit($id)
     {
         // get the activity
-        $searchedActivity = Activity::find($activity);
-
-        // show the edit form and pass the activity
-        return View::make('activities.form')->with('activity', $searchedActivity);     
+        $searchedActivity = Activity::find($id)->first();
+        // get all categories
+        $categories = Category::all();
+        // load the edit form (views/activities/form.blade.php)
+        return View::make('activities.form')->with('activity', $searchedActivity)->with('categories', $categories); 
     }
 
     /**
@@ -114,7 +115,7 @@ class ActivityController extends Controller
      * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Activity $activity)
+    public function update($id)
     {
         // validate
         $rules = array(
@@ -128,21 +129,22 @@ class ActivityController extends Controller
 
         // process the validation
         if ($validator->fails()) 
-            return Redirect::to('atividades.edit', ['activity' => $activity])->withErrors($validator);
+            return Redirect::to('activities.form', ['activity' => $activity])->withErrors($validator);
         
         // store
-        Activity::create([
-            'title'         => $request->input('titulo'),
-            'description'   => $request->input('descricao'), 
-            'category'      => $request->input('categoria'),
-            'date'      => $request->input('data'),
-            'start_time'      => $request->input('hora_inicio'),
-            'duration'      => $request->input('duracao')
-        ]);
+        $activity = Activity::find($id);
+
+        $activity->title = Input::get('titulo');
+        $activity->description = Input::get('descricao');
+        $activity->category = Input::get('categoria');
+        $activity->date = Input::get('data');
+        $activity->start_time = Input::get('hora_inicio');
+        $activity->duration = Input::get('duracao');
+        $activity->save();        
 
         // redirect
         Session::flash('message', 'Atividade atualizada com sucesso!');
-        return Redirect::to('atividades.index');
+        return redirect()->route('atividades.index');
     }
 
     /**
@@ -151,15 +153,15 @@ class ActivityController extends Controller
      * @param  \App\Activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Activity $activity)
+    public function destroy($id)
     {
         // delete
-        $searchedActivity = Activity::find($activity);
+        $searchedActivity = Activity::find($id);
         $searchedActivity->delete();
 
         // redirect
         Session::flash('message', 'Atividade removida com sucesso!');
-        return Redirect::to('atividades.index');  
+        return redirect()->route('atividades.index');
     }
 
 }

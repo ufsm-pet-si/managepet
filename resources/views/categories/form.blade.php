@@ -12,13 +12,16 @@
           <div id="flight-card" class="card">
             <div class="card-header blue accent-1">
               <div class="card-title">
-                <h5 class="flight-card-title center">Nova Categoria de Atividade</h5>
-              </div>
-            </div>
               @if(isset($category))
+                <h5 class="flight-card-title center">Editar Categoria de Atividade</h5>
+                </div>
+              </div>
                 <form action="{{ route('categorias.update', $category['id']) }}" method="POST" class="col s12" style="padding-top: 20px">
                 {{ method_field('PUT') }}
               @else
+                <h5 class="flight-card-title center">Nova Categoria de Atividade</h5>
+                </div>
+              </div>
                 <form action="{{ route('categorias.store') }}" method="POST" class="col s12" style="padding-top: 20px">
               @endif
               {{ csrf_field() }}

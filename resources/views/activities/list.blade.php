@@ -27,31 +27,36 @@
                 <td>{{ $value->date }}</td>
                 <td>{{ $value->category }}</td>
                 <td>
-                    <ul>
-                    <div class="col s2">
+                  <ul>
+                    <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
                       <li class="action-btn">
-                        <a href="participantes/show({{ $value->id }})" class="waves-effect btn-floating orange">
+                        <a  href="#" class="waves-effect btn-floating orange">
                           <i class="material-icons">check_box</i>
                         </a>
                       </li>
                       </div>
-                    <div class="col s2">
+                    <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
                       <li class="action-btn">
-                        <a href="atividades/show({{ $value->id }})" class="waves-effect btn-floating blue">
+                        <a href="{{ route('atividades.edit', $value->id) }}" class="waves-effect btn-floating blue">
                           <i class="material-icons">edit</i>
                         </a>
                       </li>
-                      </div>
-                    <div class="col s2">
+                    </div>
+                    <div class="col s2" style="margin-top:-5px !important;">
                       <li class="action-btn">
-                        <a href="atividades/destroy({{ $value->id }})" class="waves-effect btn-floating red">
-                          <i class="material-icons">delete</i>
-                        </a>
+                        <form action="{{ route('atividades.destroy', $value->id) }}" method="POST">
+                          {{ method_field('DELETE') }}
+                          {{ csrf_field() }}
+                          <button type="submit" class="waves-effect btn-floating red">
+                            <i class="material-icons">delete</i>
+                          </button>
+                        </form>
                       </li>
                       </div>
                     </ul>
-                  </td>
-                <td>{{ $value->description }}</td>
+                </td>
+                {{--<td>{{ str_limit($value->description, $limit = 200, $end = '...') }}</td>--}}
+                <td>{{ $value->description }}</td>              
               </tr>
             @endforeach
             </tbody>
