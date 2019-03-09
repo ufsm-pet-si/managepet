@@ -82,6 +82,55 @@ class PetianoController extends Controller
         return View::make('petianos.form')->with('petianos', $searchedPetianos);
     }
 
+   /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Petiano  $petiano
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        // get the category
+        $searchedUser = User::find($id)->first();
+
+        // show the edit form and pass the category
+        return View::make('petianos.form')->with('petianos', $searchedUser);     
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Petiano  $petiano
+     * @return \Illuminate\Http\Response
+     */
+    public function update($id)
+    {
+        // validate
+        $rules = array(
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        // process the validation
+        if ($validator->fails()) 
+            return Redirect::to('petianos.form', ['petianos' => $petianos])->withErrors($validator);
+        
+        // store
+        $petianos = User::find($id);
+
+        $petianos->name = Input::get('name');
+        $petianos->email = Input::get('email');
+        $petianos->password = Input::get('password');
+        $petianos->save();
+
+        // redirect
+        Session::flash('message', 'Petiano atualizado com sucesso!');
+        return redirect()->route('petianos.index');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -91,7 +140,7 @@ class PetianoController extends Controller
     public function destroy($petiano)
     {
         // delete
-        $searchedUser = todo::find($petiano);
+        $searchedUser = User::find($petiano);
         $searchedUser->delete();
         // redirect
         Session::flash('message', 'Petiano(a) removido(a) com sucesso!');
