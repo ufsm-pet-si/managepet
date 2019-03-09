@@ -131,12 +131,9 @@ class ActivityController extends Controller
         $activity->title = Input::get('titulo');
         $activity->description = Input::get('descricao');
         $activity->category = Input::get('categoria');
-<<<<<<< HEAD
         $activity->date = Input::get('data');
         $activity->start_time = Input::get('hora_inicio');
         $activity->duration = Input::get('duracao');
-=======
->>>>>>> 1a3cfca27e354f53e7383e56029e012b85d3845c
         $activity->save();        
 
         // redirect
