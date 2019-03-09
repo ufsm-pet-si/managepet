@@ -24,16 +24,20 @@
                                         <ul>
                                         <div class="col s2">
                                         <li class="action-btn">
-                                            <a href="petianos/show({{ $value->id }})" class="waves-effect btn-floating blue">
+                                            <a href="{{ route('petianos.edit', $value->id) }}" class="waves-effect btn-floating blue">
                                             <i class="material-icons">edit</i>
                                             </a>
                                         </li>
                                         </div>
                                         <div class="col s2">
                                         <li class="action-btn">
-                                            <a href="petianos/destroy({{ $value->id }})" class="waves-effect btn-floating red">
-                                            <i class="material-icons">delete</i>
-                                            </a>
+                                            <form action="{{ route('petianos.destroy', $value->id) }}" method="POST">
+                                              {{ method_field('DELETE') }}
+                                              {{ csrf_field() }}
+                                              <button type="submit" class="waves-effect btn-floating red">
+                                                <i class="material-icons">delete</i>
+                                              </button>
+                                            </form>
                                         </li>
                                         </div>
                                         </ul>
