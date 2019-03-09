@@ -44,7 +44,7 @@
                 <div class="row">
                   <div class="col s12 m6">
                   <label>Categoria</label>
-                    <select id="categoria" name="categoria" class="browser-default">
+                    <select id="categoria" name="categoria" required class="browser-default">
                       <option value="" disabled selected>Escolha a categoria</option>
                       @foreach($categories as $key => $value)
                         <option value="{{ $value->category }}">{{ $value->name }}</option>

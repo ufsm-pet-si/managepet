@@ -24,7 +24,7 @@
               @csrf
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="nome-categoria" name="name" type="text" class="validate" value="{{ old('name', isset($category) ? $category->name : '') }}">
+                  <input id="nome-categoria" name="name" type="text" class="validate" value="{{ old('name', isset($category) ? $category->name : '') }}" required>
                   <label for="nome-categoria">Nome da categoria</label>
                 </div>
               </div>
