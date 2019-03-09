@@ -51,9 +51,6 @@ class ActivityController extends Controller
         $rules = array(
             'titulo'    => 'required',
             'categoria' => 'required',
-            'data' => 'required',
-            'hora_inicio' => 'required',
-            'duracao' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -65,12 +62,9 @@ class ActivityController extends Controller
         Activity::create([
             'title'         => Input::get('titulo'),
             'description'   => Input::get('descricao'), 
-            'category'      => Input::get('categoria'),
-            'date'      => Input::get('data'),
-            'start_time'      => Input::get('hora_inicio'),
-            'duration'      => Input::get('duracao')
+            'category'      => Input::get('categoria')
         ]);
-
+        
         // redirect
         Session::flash('message', 'Atividade criada com sucesso!');
         return redirect()->route('atividades.index');
@@ -121,9 +115,6 @@ class ActivityController extends Controller
         $rules = array(
             'titulo'    => 'required',
             'categoria' => 'required',
-            'data' => 'required',
-            'hora_inicio' => 'required',
-            'duracao' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -137,9 +128,6 @@ class ActivityController extends Controller
         $activity->title = Input::get('titulo');
         $activity->description = Input::get('descricao');
         $activity->category = Input::get('categoria');
-        $activity->date = Input::get('data');
-        $activity->start_time = Input::get('hora_inicio');
-        $activity->duration = Input::get('duracao');
         $activity->save();        
 
         // redirect
