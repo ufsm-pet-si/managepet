@@ -25,7 +25,7 @@ Route::resource('participantes', 'ParticipantController');
 //activities - editions
 Route::resource('atividades', 'ActivityController');
 //activities - categories
-Route::resource('categorias', 'CategoryController');
+Route::resource('categories', 'CategoryController');
 //agenda
 Route::get('/agenda', 'HomeController@schedule')->name('schedule');
 //certificados
