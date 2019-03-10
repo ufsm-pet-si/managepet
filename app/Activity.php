@@ -7,4 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     protected $fillable = ['title', 'speaker', 'description', 'category'];
+
+    /**
+     * Get the activity_days for the activity record.
+     */
+    public function activityDays()
+    {
+        return $this->hasMany('App\ActivityDay');
+    }
+
+    /**
+     * Get the category that owns the activity record.
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
 }
