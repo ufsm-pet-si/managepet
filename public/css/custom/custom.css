@@ -12,3 +12,7 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
 [type="radio"]:not(:checked) + label, [type="radio"]:checked + label {
 	padding-left: 25px !important;
 }
+
+table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr.parent>th:first-child:before {
+    background-color: #82B1FF !important;
+}
