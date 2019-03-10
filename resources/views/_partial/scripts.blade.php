@@ -24,8 +24,10 @@
 <script src="{{ asset('vendors/datatables/datetime-moment.js') }}"></script>
 <!-- TODO: refatoracao -> mover cada script para a pagina que necessita dele (nao ha necessidade de carregar todos aqui) -->
 <script src="{{ asset('js/init-datatable.js') }}"></script>
+
+{{-- asset('js/list-'. Request::path() .'.js') // change the code below for this line when normalize route names --}} 
 @switch(Request::path())
-    @case('categorias')
+    @case('categories')
         <script src="{{ asset('js/list-categories.js') }}"></script>
         @break
     @case('petianos')
@@ -62,6 +64,7 @@
             var elems = document.querySelectorAll('.sidenav');
             var instances = M.Sidenav.init(elems);
         });
+        
         document.addEventListener('DOMContentLoaded', function() {
             var elems = document.querySelectorAll('.dropdown-trigger');
             var instances = M.Dropdown.init(elems);
