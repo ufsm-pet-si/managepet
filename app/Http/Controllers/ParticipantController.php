@@ -20,7 +20,7 @@ class ParticipantController extends Controller
     public function index()
     {
         // load the views and pass the participants 
-        return View::make('participantes.list');
+        return View::make('participants.list');
     }
 
     /**

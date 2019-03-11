@@ -14,7 +14,6 @@
             <thead>
               <tr>
                 <th>Título</th>
-                <th>Data</th>
                 <th>Categoria</th>
                 <th>Ações</th>
                 <th>Descrição</th>
@@ -24,13 +23,12 @@
             @foreach($activities as $key => $value)
               <tr>
                 <td>{{ $value->title }}</td>
-                <td>{{ $value->date }}</td>
-                <td>{{ $value->category }}</td>
+                <td>{{ $value->category->name }}</td>
                 <td>
                   <ul>
                     <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
                       <li class="action-btn">
-                        <a  href="#" class="waves-effect btn-floating orange">
+                        <a  href="participantes" class="waves-effect btn-floating orange">
                           <i class="material-icons">check_box</i>
                         </a>
                       </li>

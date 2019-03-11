@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
 {
-    protected $fillable = ['title', 'speaker', 'description', 'category'];
+    protected $fillable = ['title', 'speaker', 'description', 'category_id'];
 
     /**
      * Get the activity_days for the activity record.

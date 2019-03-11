@@ -63,7 +63,7 @@ class PetianoController extends Controller
         ]);
 
         // redirect
-        Session::flash('message', 'Petiano(a) criado(a) com sucesso!');
+        Session::flash('message', ['text'=>"Petiano criado com sucesso!", 'type'=>"success"]);
         return redirect()->route('petianos.index');
     }
 
@@ -127,7 +127,7 @@ class PetianoController extends Controller
         $petianos->save();
 
         // redirect
-        Session::flash('message', 'Petiano atualizado com sucesso!');
+        Session::flash('message', ['text'=>"Petiano atualizado com sucesso!", 'type'=>"success"]);
         return redirect()->route('petianos.index');
     }
 
@@ -143,7 +143,7 @@ class PetianoController extends Controller
         $searchedUser = User::find($petiano);
         $searchedUser->delete();
         // redirect
-        Session::flash('message', 'Petiano(a) removido(a) com sucesso!');
+        Session::flash('message', ['text'=>"Petiano removido com sucesso!", 'type'=>"success"]);
         return redirect()->route('petianos.index');    
     }
 

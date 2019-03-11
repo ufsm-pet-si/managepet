@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
+use App\ActivityDay;
 use App\Category;
 use View;
 use Session;
@@ -21,6 +22,7 @@ class ActivityController extends Controller
     {
         // get all activities
         $activities = Activity::all();
+        
         // load the views and pass the activities
         // return view('activities.index', compact('activities'));
         return View::make('activities.list')->with('activities', $activities);
@@ -47,29 +49,23 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        // validate
-        $rules = array(
-            'titulo'    => 'required',
-            'categoria' => 'required',
-        );
-        $validator = Validator::make(Input::all(), $rules);
-
-        // process the validation
-        if ($validator->fails()) 
-            return redirect()->route('atividades.create')->withErrors($validator);
+        $request->validate([
+            'title'          => 'required',
+            'category_id' => 'required',
+        ]);
 
         // store
-        Activity::create([
-            'title'         => Input::get('titulo'),
-            'description'   => Input::get('descricao'), 
-            'category'      => Input::get('categoria'),
-            'date'      => Input::get('data'),
-            'start_time'      => Input::get('hora_inicio'),
-            'duration'      => Input::get('duracao')
+        $id_activity = Activity::create($request->all())->id;
+
+        ActivityDay::create([
+            'activity_id'      => $id_activity,
+            'date'         => Input::get('date'),
+            'start_hour'   => Input::get('start_hour'), 
+            'duration'      => Input::get('duration')
         ]);
-        
+
         // redirect
-        Session::flash('message', 'Atividade criada com sucesso!');
+        Session::flash('message', ['text'=>"Atividade criada com sucesso!", 'type'=>"success"]);
         return redirect()->route('atividades.index');
     }
 
@@ -137,7 +133,7 @@ class ActivityController extends Controller
         $activity->save();        
 
         // redirect
-        Session::flash('message', 'Atividade atualizada com sucesso!');
+        Session::flash('message', ['text'=>"Atividade atualizada com sucesso!", 'type'=>"success"]);
         return redirect()->route('atividades.index');
     }
 
@@ -154,7 +150,7 @@ class ActivityController extends Controller
         $searchedActivity->delete();
 
         // redirect
-        Session::flash('message', 'Atividade removida com sucesso!');
+        Session::flash('message', ['text'=>"Atividade removida com sucesso!", 'type'=>"success"]);
         return redirect()->route('atividades.index');
     }
 
