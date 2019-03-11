@@ -44,26 +44,17 @@ class PetianoController extends Controller
     public function store(Request $request)
     {
         // validate
-        $rules = array(
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required',
-        );
-        $validator = Validator::make(Input::all(), $rules);
-
-        // process the validation
-        if ($validator->fails()) 
-            return redirect()->route('petianos.create')->withErrors($validator);
-
-        // store
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => $request->input('password'), 
         ]);
 
+         // store
+        User::create($request->all());
+
         // redirect
-        Session::flash('message', ['text'=>"Petiano criado com sucesso!", 'type'=>"success"]);
+        Session::flash('message', ['text'=>"Petiano(a) criada com sucesso!", 'type'=>"success"]);
         return redirect()->route('petianos.index');
     }
 
@@ -91,10 +82,10 @@ class PetianoController extends Controller
     public function edit($id)
     {
         // get the category
-        $searchedUser = User::find($id)->first();
+        $searchedUser = User::find($id);
 
-        // show the edit form and pass the category
-        return View::make('petianos.form')->with('petianos', $searchedUser);     
+        // show the edit form and pass the petiano
+        return View::make('petianos.form')->with('petiano', $searchedUser);     
     }
 
     /**
@@ -104,30 +95,21 @@ class PetianoController extends Controller
      * @param  \App\Petiano  $petiano
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, User $petiano)
     {
         // validate
-        $rules = array(
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
             'password' => 'required'
-        );
-        $validator = Validator::make(Input::all(), $rules);
+        ]);
 
-        // process the validation
-        if ($validator->fails()) 
-            return Redirect::to('petianos.form', ['petianos' => $petianos])->withErrors($validator);
-        
         // store
-        $petianos = User::find($id);
-
-        $petianos->name = Input::get('name');
-        $petianos->email = Input::get('email');
-        $petianos->password = Input::get('password');
-        $petianos->save();
+        $petiano->update($request->all());
+        $petiano->save();
 
         // redirect
-        Session::flash('message', ['text'=>"Petiano atualizado com sucesso!", 'type'=>"success"]);
+        Session::flash('message', ['text'=>"Petiano(a) atualizado com sucesso!", 'type'=>"success"]);
         return redirect()->route('petianos.index');
     }
 
@@ -137,13 +119,12 @@ class PetianoController extends Controller
      * @param  \App\Petiano  $petiano
      * @return \Illuminate\Http\Response
      */
-    public function destroy($petiano)
+    public function destroy(User $petiano)
     {
         // delete
-        $searchedUser = User::find($petiano);
-        $searchedUser->delete();
+        $petiano->delete();
         // redirect
-        Session::flash('message', ['text'=>"Petiano removido com sucesso!", 'type'=>"success"]);
+        Session::flash('message', ['text'=>"Petiano(a) removido com sucesso!", 'type'=>"success"]);
         return redirect()->route('petianos.index');    
     }
 
