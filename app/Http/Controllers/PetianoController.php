@@ -8,6 +8,7 @@ use Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class PetianoController extends Controller
 {
@@ -43,7 +44,7 @@ class PetianoController extends Controller
      */
     public function store(Request $request)
     {
-        // validate
+       // validate
         $request->validate([
             'name' => 'required',
             'email' => 'required',
@@ -51,7 +52,12 @@ class PetianoController extends Controller
         ]);
 
          // store
-        User::create($request->all());
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'type' => $request->input('type'),
+        ]);
 
         // redirect
         Session::flash('message', ['text'=>"Petiano(a) criada com sucesso!", 'type'=>"success"]);
@@ -100,13 +106,11 @@ class PetianoController extends Controller
         // validate
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required'
         ]);
 
         // store
         $petiano->update($request->all());
-        $petiano->save();
 
         // redirect
         Session::flash('message', ['text'=>"Petiano(a) atualizado com sucesso!", 'type'=>"success"]);

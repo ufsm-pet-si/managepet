@@ -43,13 +43,6 @@
     <div id="main">
         <div class="wrapper">
             {{--Se for login, não exibir left_sidebar--}}
-            <!-- 
-            @if (Auth::guest())
-                
-            @else
-                @include('_partial/left_sidebar')
-            @endif 
-            -->
             @include('_partial/left_sidebar')
 
             <section id="content">

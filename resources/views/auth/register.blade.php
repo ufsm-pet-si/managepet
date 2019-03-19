@@ -48,6 +48,7 @@
             <div class="container"><div id="register-page" class="row">
                     <div class="col s12 m12 l12 z-depth-4 card-panel border-radius-6 register-card bg-opacity-8">
                         <form class="login-form" method="POST" action="{{ route('register') }}">
+                        @csrf
                             <div class="row">
                                 <div class="input-field col s12">
                                     <h5 class="ml-4">{{ __('Register') }}</h5>

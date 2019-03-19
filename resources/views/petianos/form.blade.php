@@ -15,7 +15,7 @@
                 <h5 class="flight-card-title center">{{ isset($petiano) ? 'Editar Petiano(a)' : 'Novo(a) Petiano(a)' }}</h5>
               </div>
             </div>
-            @if(isset($petiano))
+              @if(isset($petiano))
                 <form action="{{ route('petianos.update', $petiano['id']) }}" method="POST" class="col s12" style="padding-top: 20px">
                 @method('PUT')
               @else
@@ -34,24 +34,20 @@
                   <label for="email-petiano">Email</label>
                 </div>
               </div>
+              @if(!isset($petiano))
               <div class="row">
-                <div class="input-field col s12">
-                  <input id="usuario" type="text" class="validate">
-                  <label for="usuario">Usuário</label>
-                </div>
+                  <div class="input-field col s12">
+                    <input id="senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? $petiano->password : '') }}" required>
+                    <label for="senha">{{ isset($petiano) ? 'Nova Senha' : 'Senha' }} </label>
+                  </div>
               </div>
               <div class="row">
-                <div class="input-field col s12">
-                  <input id="senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? $petiano->password : '') }}" required>
-                  <label for="senha">{{ isset($petiano) ? 'Nova Senha' : 'Senha' }} </label>
-                </div>
+                  <div class="input-field col s12">
+                    <input id="rep_senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? $petiano->password : '') }}" required>
+                    <label for="rep_senha">Repetir Senha</label>
+                  </div>
               </div>
-              <div class="row">
-                <div class="input-field col s12">
-                  <input id="rep_senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? $petiano->password : '') }}" required>
-                  <label for="rep_senha">Repetir Senha</label>
-                </div>
-              </div>
+              @endif
               <div class="row" style="padding-bottom: 20px;">
                 <div class="col s12">
                     <input type="checkbox" id="task1" />
