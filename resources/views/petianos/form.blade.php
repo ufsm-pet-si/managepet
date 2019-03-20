@@ -50,11 +50,30 @@
               @endif
               <div class="row" style="padding-bottom: 20px;">
                 <div class="col s12">
-                    <input type="checkbox" id="task1" />
-                    <label for="task1">{{ isset($petiano) ? 'Tornar Administrador' : 'Administrador' }}
-                      <a href="#" class="secondary-content">
-                      </a>
-                    </label>
+                  @if(!isset($petiano))
+                      <input type="hidden" name="type" value="Petiano" checked />
+                      <input type="checkbox" id="task1" name="type" value="Admin" />
+                      <label for="task1">{{ isset($petiano) ? 'Tornar Administrador' : 'Administrador' }}
+                        <a href="#" class="secondary-content">
+                        </a>
+                      </label>
+                  @else
+                      @if($petiano->type == "Petiano")
+                          <input type="hidden" name="type" value="Petiano" checked />
+                          <input type="checkbox" id="task1" name="type" value="Admin" />
+                          <label for="task1">{{ isset($petiano) ? 'Tornar Administrador' : 'Administrador' }}
+                            <a href="#" class="secondary-content">
+                            </a>
+                          </label>
+                      @else
+                          <input type="hidden" name="type" value="Petiano"/>
+                          <input type="checkbox" id="task1" name="type" value="Admin" checked/>
+                          <label for="task1">{{ isset($petiano) ? 'Tornar Administrador' : 'Administrador' }}
+                            <a href="#" class="secondary-content">
+                            </a>
+                          </label>
+                      @endif
+                  @endif
                   <button class="btn blue accent-2 waves-effect waves-light right" type="submit" name="action">Salvar
                     <i class="material-icons right">send</i>
                   </button>
