@@ -31,4 +31,7 @@ class HomeController extends Controller
     public function certificates(){
         return view('certificates/index');
     }
+    public function relatories(){
+        return view('relatories/index');
+    }
 }

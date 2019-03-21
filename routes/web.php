@@ -31,3 +31,5 @@ Route::resource('categories', 'CategoryController');
 Route::get('/agenda', 'HomeController@schedule')->name('schedule');
 //certificados
 Route::get('/certificados', 'HomeController@certificates')->name('certificates');
+//relatorios
+Route::get('/relatorios', 'HomeController@relatories')->name('relatories');

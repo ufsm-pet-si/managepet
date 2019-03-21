@@ -64,7 +64,7 @@
                             </a>
                         </li>
                         <li class="item-menu bold">
-                            <a href="#" class="waves-effect waves-cyan">
+                            <a href="{{'/relatorios'}}" class="waves-effect waves-cyan">
                                 <i class="material-icons">trending_up</i>
                                 <span class="nav-text">Relatórios</span>
                             </a>
