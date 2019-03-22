@@ -6,7 +6,7 @@
                 <ul class="left">
                     <li>
                         <h1 class="logo-wrapper">
-                            <a href="index-manage.html" class="brand-logo darken-1">
+                            <a href="/home" class="brand-logo darken-1">
                                 <span class="logo-text hide-on-med-and-down">Manage PET</span>
                             </a>
                         </h1>
@@ -14,8 +14,8 @@
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button">
-                            Bem vindo(a) admin
+                        <a href="/logout" class="waves-effect waves-block waves-light profile-button">
+                            Sair
                         </a>
                     </li>
                 </ul>

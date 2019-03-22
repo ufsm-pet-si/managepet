@@ -100,9 +100,9 @@
                                 <div class="input-field col s6 m6 l6">
                                     <p class="margin medium-small waves-light" ><a href="{{ route('register') }}">Registre-se</a></p>
                                 </div>
-                                <div class="input-field col s6 m6 l6">
+                                <!--<div class="input-field col s6 m6 l6">
                                     <p class="margin right-align medium-small waves-light"><a class="right" href="{{ route('password.request') }}">{{ __('Esqueceu sua senha?') }}</a></p>
-                                </div>
+                                </div>-->
                             </div>
                         </form>
                     </div>

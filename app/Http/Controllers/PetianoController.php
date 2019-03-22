@@ -106,11 +106,15 @@ class PetianoController extends Controller
         // validate
         $request->validate([
             'name' => 'required',
-            'email' => 'required'
+            'email' => 'required',
         ]);
 
-        // store
-        $petiano->update($request->all());
+        $petiano->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'type' => $request->input('type'),
+        ]);
 
         // redirect
         Session::flash('message', ['text'=>"Petiano(a) atualizado com sucesso!", 'type'=>"success"]);

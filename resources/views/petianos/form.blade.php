@@ -34,20 +34,18 @@
                   <label for="email-petiano">Email</label>
                 </div>
               </div>
-              @if(!isset($petiano))
               <div class="row">
                   <div class="input-field col s12">
-                    <input id="senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? $petiano->password : '') }}" required>
+                    <input id="senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? '' : '') }}" required>
                     <label for="senha">{{ isset($petiano) ? 'Nova Senha' : 'Senha' }} </label>
                   </div>
               </div>
               <div class="row">
                   <div class="input-field col s12">
-                    <input id="rep_senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? $petiano->password : '') }}" required>
+                    <input id="rep_senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? '' : '') }}" required>
                     <label for="rep_senha">Repetir Senha</label>
                   </div>
               </div>
-              @endif
               <div class="row" style="padding-bottom: 20px;">
                 <div class="col s12">
                   @if(!isset($petiano))
@@ -61,14 +59,14 @@
                       @if($petiano->type == "Petiano")
                           <input type="hidden" name="type" value="Petiano" checked />
                           <input type="checkbox" id="task1" name="type" value="Admin" />
-                          <label for="task1">{{ isset($petiano) ? 'Tornar Administrador' : 'Administrador' }}
+                          <label for="task1"> Tornar Administrador(a)
                             <a href="#" class="secondary-content">
                             </a>
                           </label>
                       @else
                           <input type="hidden" name="type" value="Petiano"/>
                           <input type="checkbox" id="task1" name="type" value="Admin" checked/>
-                          <label for="task1">{{ isset($petiano) ? 'Tornar Administrador' : 'Administrador' }}
+                          <label for="task1"> Tornar Administrador(a)
                             <a href="#" class="secondary-content">
                             </a>
                           </label>
