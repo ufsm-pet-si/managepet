@@ -17,13 +17,13 @@
                         <form class="col s12" style="padding-top: 20px">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="nome-participante" type="text" class="validate">
+                                    <input id="nome-participante" type="text" class="validate" name='name'>
                                     <label for="nome-participante">Nome</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="email-participante" type="email" class="validate">
+                                    <input id="email-participante" type="email" class="validate" name='email'>
                                     <label for="email-participante">E-mail</label>
                                 </div>
                             </div>
