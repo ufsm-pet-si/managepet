@@ -29,25 +29,25 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="tipo" type="text" class="validate">
+                                    <input id="tipo" type="text" class="validate" name='tipo'>
                                     <label for="tipo">Tipo</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="instituicao" type="text" class="validate">
+                                    <input id="instituicao" type="text" class="validate" name='instituition'>
                                     <label for="instituicao">Instituição</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="matricula" type="text" class="validate">
+                                    <input id="matricula" type="text" class="validate" name='matricula'>
                                     <label for="matricula">Matrícula</label>
                                 </div>
                             </div>
                             <div class="row" style="padding-bottom: 20px;">
                                 <div class="input-field col s12">
-                                    <input id="curso" type="text" class="validate">
+                                    <input id="curso" type="text" class="validate" name='curso'>
                                     <label for="curso">Curso</label>
                                     <button class="btn blue accent-2 waves-effect waves-light right" type="submit"
                                             name="action">Salvar
