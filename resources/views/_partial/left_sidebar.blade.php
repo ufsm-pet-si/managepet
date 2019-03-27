@@ -45,12 +45,16 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
+				    <li class="item-menu">
+                                        <a href="{{'/categories'}}">Categorias</a>
+                                    </li>
                                     <li class="item-menu">
                                         <a href="{{'/atividades'}}" >Edições</a>
                                     </li>
-                                    <li class="item-menu">
-                                        <a href="{{'/categories'}}">Categorias</a>
+				    <li class="item-menu">
+                                        <a href="{{'/participantes'}}">Participantes</a>
                                     </li>
+                                    
                                 </ul>
                             </div>
                         </li>

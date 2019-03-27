@@ -24,4 +24,9 @@ class Activity extends Model
         return $this->belongsTo('App\Category');
     }
 
+    public function participants()
+    {
+	return $this->hasMany('App\Participant');
+    }
+
 }
