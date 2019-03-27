@@ -19,6 +19,7 @@ class CreateParticipantsTable extends Migration
             $table->string('type', 20);
             $table->string('email', 45);
             $table->string('matricula', 12);
+            $table->string('instituition', 12);
             $table->integer('activity_id')->unsigned();
             $table->foreign('activity_id')->references('id')->on('activities');
             $table->timestamps();

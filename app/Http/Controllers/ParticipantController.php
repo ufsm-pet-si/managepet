@@ -19,8 +19,9 @@ class ParticipantController extends Controller
      */
     public function index()
     {
+	$participants = Participant::all();
         // load the views and pass the participants 
-        return View::make('participants.list');
+        return View::make('participants.list')->with('participants', $participants);
     }
 
     /**
@@ -46,7 +47,51 @@ class ParticipantController extends Controller
     public function create()
     {
         // load the create form (views/participants/form.blade.php)
-        return View::make('participantes.form');
+        return View::make('participants.form');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+	$request->validate([
+            'name'  => 'required',
+            'email' => 'required',
+        ]);
+
+        // store
+        Participant::create($request->all());
+      
+        // redirect
+        Session::flash('message', ['text'=>"Participante criado com sucesso!", 'type'=>"success"]);
+        return redirect()->route('participantes.index');
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Petiano  $petiano
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $petiano)
+    {
+	$request->validate([
+            'name'  => 'required',
+            'email' => 'required',
+        ]);
+
+        // store
+        Participant::update($request->all());
+
+        // redirect
+        Session::flash('message', ['text'=>"Participante atualizado com sucesso!", 'type'=>"success"]);
+        return redirect()->route('participantes.index');
     }
 
 }

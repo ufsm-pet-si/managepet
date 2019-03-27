@@ -53,8 +53,7 @@
                     <select id="category_id" name="category_id" required class="browser-default">
                       <option value="" disabled selected>Escolha a categoria</option>
                       @foreach($categories as $key => $value)
-                        <option value="{{ $value->id }}">
-                        {{ $value->name }}</option>
+                        <option value="{{ $value->id }}"> {{ $value->name }}</option>
                         @endforeach
                     </select>
                   </div>            

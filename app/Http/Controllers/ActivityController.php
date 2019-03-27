@@ -22,6 +22,7 @@ class ActivityController extends Controller
     {
         // get all activities
         $activities = Activity::all();
+	// $activities->participants();
         
         // load the views and pass the activities
         // return view('activities.index', compact('activities'));
