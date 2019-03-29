@@ -30,8 +30,10 @@
                                 <td>{{ $value->instituition }}</td>
 
                                 <td>
+                                @foreach($activityDays as $day => $value)
                                     <input type="checkbox" name="cadastro" value="a1" id="{{$value->matricula}}">
                                     <label for="{{$value->matricula}}"></label>
+                                @endforeach
                                 </td>
                             </tr>
                             @endforeach
