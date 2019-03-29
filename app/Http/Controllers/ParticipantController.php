@@ -89,10 +89,10 @@ class ParticipantController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Participant  $participant
+     * @param  \App\Participant  $participante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Participant $participant)
+    public function update(Request $request, Participant $participante)
     {
         $request->validate([
             'name'  => 'required',
@@ -100,7 +100,7 @@ class ParticipantController extends Controller
         ]);
 
         // store
-        $participant->update($request->all());
+        $participante->update($request->all());
 
         // redirect
         Session::flash('message', ['text' => "Participante atualizado com sucesso!", 'type' => "success"]);
@@ -110,13 +110,13 @@ class ParticipantController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Participant  $participant
+     * @param  \App\Participant  $participante
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Participant $participante)
     {
         // delete
-        Participant::destroy($id);
+        $participante->delete();
 
         // redirect
         Session::flash('message', ['text' => "Participante removido com sucesso!", 'type' => "success"]);
