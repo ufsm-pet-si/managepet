@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <!--
+
             <div class="row" style="padding-top: 20px;">
                 <div class="col s12">
                     <button class="btn blue accent-2" type="submit" name="action">Salvar
@@ -50,7 +50,7 @@
                     </button>
                 </div>
             </div>
--->
+
         <div class="row right">
             <div class="fixed-action-btn action-btn" id="form-participante">
                 <a href="participantes/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
