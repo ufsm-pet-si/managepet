@@ -24,9 +24,9 @@ class Activity extends Model
         return $this->belongsTo('App\Category');
     }
 
-    public function participants()
+    public function subscription()
     {
-	return $this->hasMany('App\Participant');
+	return $this->hasMany('App\Subscription');
     }
 
 }

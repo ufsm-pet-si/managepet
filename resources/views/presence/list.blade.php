@@ -21,7 +21,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($participants as $key => $value)
+                            @foreach($subscription as $key => $value)
                             <tr>
                                 <td>{{ $value->name }}</td>
                                 <td>{{ $value->type }}</td>
