@@ -52,8 +52,7 @@
                       <input type="hidden" name="type" value="Petiano" checked />
                       <input type="checkbox" id="task1" name="type" value="Admin" />
                       <label for="task1">{{ isset($petiano) ? 'Tornar Administrador' : 'Administrador' }}
-                        <a href="#" class="secondary-content">
-                        </a>
+                        <a href="#" class="secondary-content"></a>
                       </label>
                   @else
                       @if($petiano->type == "Petiano")

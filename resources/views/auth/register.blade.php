@@ -99,6 +99,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
+                                    <input type="hidden" name="type" value="Admin"/>
                                     <button class="btn waves-effect waves-light border-round waves-light col s12" type="submit">{{ __('Registrar') }}</button>
                                 </div>
                             </div>
