@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePresenceTable extends Migration
+class CreateSubscriptionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreatePresenceTable extends Migration
      */
     public function up()
     {
-        Schema::create('presence', function (Blueprint $table) {
+        Schema::create('subscription', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('activity_day_id')->unsigned();
-            $table->foreign('activity_day_id')->references('id')->on('activity_days');
+            $table->integer('activity_id')->unsigned();
+            $table->foreign('activity_id')->references('id')->on('activities');
             $table->integer('participant_id')->unsigned();
             $table->foreign('participant_id')->references('id')->on('participants');
-	        $table->boolean('presence_mark');
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreatePresenceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presence');
+        Schema::dropIfExists('subscription');
     }
 }

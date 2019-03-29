@@ -87,7 +87,7 @@ class PetianoController extends Controller
      */
     public function edit($id)
     {
-        // get the category
+        // get the user
         $searchedUser = User::find($id);
 
         // show the edit form and pass the petiano

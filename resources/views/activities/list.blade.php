@@ -28,7 +28,7 @@
                   <ul>
                     <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
                       <li class="action-btn">                        
-			<a href="{{ route('participantes_atividade', $value->id) }}" class="waves-effect btn-floating blue">
+			<a href="{{ route('participantes.index', $value->id) }}" class="waves-effect btn-floating blue">
                           <i class="material-icons">check_box</i>
                         </a>
                       </li>
