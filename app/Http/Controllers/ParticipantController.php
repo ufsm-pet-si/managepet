@@ -92,7 +92,7 @@ class ParticipantController extends Controller
      * @param  \App\Participant  $participant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Participant $participant)
+    public function update(Request $request, Participant $participante)
     {
         $request->validate([
             'name'  => 'required',
@@ -100,7 +100,7 @@ class ParticipantController extends Controller
         ]);
 
         // store
-        $participant->update($request->all());
+        $participante->update($request->all());
 
         // redirect
         Session::flash('message', ['text' => "Participante atualizado com sucesso!", 'type' => "success"]);
@@ -113,10 +113,10 @@ class ParticipantController extends Controller
      * @param  \App\Participant  $participant
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Participant $participante)
     {
         // delete
-        Participant::destroy($id);
+        $participante->delete();
 
         // redirect
         Session::flash('message', ['text' => "Participante removido com sucesso!", 'type' => "success"]);
