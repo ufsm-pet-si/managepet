@@ -30,8 +30,8 @@
                                 <td>{{ $value->instituition }}</td>
 
                                 <td>
-                                    <input type="checkbox" name="cadastro" value="a1" id="cad">
-                                    <label for="cad"></label>
+                                    <input type="checkbox" name="cadastro" value="a1" id="{{$value->matricula}}">
+                                    <label for="{{$value->matricula}}"></label>
                                 </td>
                             </tr>
                             @endforeach

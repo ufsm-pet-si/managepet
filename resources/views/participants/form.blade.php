@@ -21,7 +21,6 @@
                             <form action="{{ route('participantes.store') }}" method="POST" class="col s12">
                                 @endif
                                 @csrf
-                                <!--form action="{{ route('participantes.store') }}" method="POST" class="col s12"-->
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <input id="name" type="text" class="validate" name='name' value="{{ old('name', isset($participant) ? $participant->name : '') }}">

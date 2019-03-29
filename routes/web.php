@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //petianos
 Route::resource('petianos', 'PetianoController');
 //participants
-Route::resource('/participantes', 'ParticipantController');
+Route::resource('participantes', 'ParticipantController');
 //activities - editions
 Route::resource('atividades', 'ActivityController');
 //activities - categories
