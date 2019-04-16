@@ -13,10 +13,17 @@
                     </li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
-                    <li>
+                    @if (!Auth::guest())
                         <a href="/logout" class="waves-effect waves-block waves-light profile-button">
                             Sair
                         </a>
+                    @else
+                        <a href="/login" class="waves-effect waves-block waves-light profile-button">
+                            Login
+                        </a>
+                    @endif
+                    <li>
+                        
                     </li>
                 </ul>
             </div>

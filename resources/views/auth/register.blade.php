@@ -51,7 +51,7 @@
                         @csrf
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <h5 class="ml-4">{{ __('Register') }}</h5>
+                                    <h5 class="ml-4">{{ __('Registre seu PET') }}</h5>
                                 </div>
                             </div>
                             <div class="row margin">
@@ -64,6 +64,18 @@
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="row margin">
+                                <div class="input-field col s12">
+                                    <i class="material-icons prefix pt-2">fingerprint</i>
+                                    <select name='pet' for="pet">
+                                        <option value=''>Selecione seu PET</option>
+                                        <option value='UFSM - Sistemas de Informação'>UFSM - Sistemas de Informação</option>
+                                        <option value='UFSM - Odontologia'>UFSM - Odontologia</option>
+                                        <option value='UFSM - Zootecnia'>UFSM - Zootecnia</option>
+                                    </select>
+                                    <label for="pet">{{ __('Selecione seu PET') }}</label>
                                 </div>
                             </div>
                             <div class="row margin">

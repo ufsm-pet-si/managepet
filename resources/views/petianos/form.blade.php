@@ -30,6 +30,12 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
+                  <input id="pet" name="pet" type="text"  value="{{ Auth::user()->pet }}" readonly=“true” style="color: #cccccc">
+                  <label for="pet">PET</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
                   <input id="email-petiano" name="email" type="email" class="validate" value="{{ old('email', isset($petiano) ? $petiano->email : '') }}" required>
                   <label for="email-petiano">Email</label>
                 </div>
@@ -37,12 +43,12 @@
               <div class="row">
                   <div class="input-field col s12">
                     <input id="senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? '' : '') }}" required>
-                    <label for="senha">{{ isset($petiano) ? 'Nova Senha' : 'Senha' }} </label>
+                    <label for="senha">{{ isset($petiano) ? 'Peça a senha ao usuário ou registre uma Nova Senha' : 'Senha' }} </label>
                   </div>
               </div>
               <div class="row">
                   <div class="input-field col s12">
-                    <input id="rep_senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? '' : '') }}" required>
+                    <input id="rep_senha" name="password" type="password" class="validate" value="{{ old('password', isset($petiano) ? '' : '') }}" required >
                     <label for="rep_senha">Repetir Senha</label>
                   </div>
               </div>

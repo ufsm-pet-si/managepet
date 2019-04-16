@@ -52,7 +52,7 @@
                             @csrf
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <h5 class="ml-4 center-align">{{ __('Manage Pet') }}</h5>
+                                    <h5 class="ml-4 center-align">{{ __('Manage PET') }}</h5>
                                 </div>
                             </div>
                             <div class="row margin">
