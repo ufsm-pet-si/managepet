@@ -70,7 +70,6 @@
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix pt-2">fingerprint</i>
                                     <select name='pet' for="pet">
-                                        <option value=''>Selecione seu PET</option>
                                         <option value='UFSM - Sistemas de Informação'>UFSM - Sistemas de Informação</option>
                                         <option value='UFSM - Odontologia'>UFSM - Odontologia</option>
                                         <option value='UFSM - Zootecnia'>UFSM - Zootecnia</option>
@@ -84,7 +83,7 @@
                                     <input id="email" type="email" class="validate{{ $errors->has('email') ? ' invalid' : '' }}" name="email" value="{{ old('email') }}" required>
                                     <label for="email">{{ __('E-Mail') }}</label>
                                     @if ($errors->has('email'))
-                                        <span class="red-text">
+                                    <span class="red-text">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                     @endif
