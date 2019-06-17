@@ -33,3 +33,5 @@ Route::get('/agenda', 'HomeController@schedule')->name('schedule');
 Route::get('/certificados', 'HomeController@certificates')->name('certificates');
 //relatorios
 Route::get('/relatorios', 'HomeController@relatories')->name('relatories');
+//inscrição nas atividades
+Route::resource('subscription', 'SubscriptionController');

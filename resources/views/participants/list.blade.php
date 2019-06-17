@@ -1,32 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="section">
-            <div class="divider"></div>
-            <div id="hoverable-table">
-                <h4 class="header">Participantes Atividade</h4>
-                <div class="row">
-                    <div class="col s12">
+<div class="container">
+    <div class="section">
+        <div class="divider"></div>
+        <div id="hoverable-table">
+            <h4 class="header">Participantes</h4>
+            <div class="row">
+                <div class="col s12">
                     <div id="table-buttons" class="row"></div>
-                        <table class="layout display responsive-table bordered" id="table_participants">
-                            <thead>
+                    <table class="layout display responsive-table bordered" id="table_participants">
+                        <thead>
                             <tr>
                                 <th>Nome</th>
                                 <th>Tipo</th>
                                 <th>E-mail</th>
                                 <th>Matrícula</th>
-                                <th>Dia 1</th>
-                                <th>Dia 2</th>
-                                <th>Dia 3</th>
+                                <th>Ações</th>
+                                <th>Instituição</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
+                            @foreach($participants as $key => $value)
                             <tr>
-                                <td>Isabella</td>
-                                <td>Aluno</td>
-                                <td>isakis@inf.ufsm.br</td>
-                                <td>123456789</td>
+                                <td>{{ $value->name }}</td>
+                                <td>{{ $value->type }}</td>
+                                <td>{{ $value->email }}</td>
+                                <td>{{ $value->matricula }}</td>
+
+                                <!--
                                 <td>
                                     <input type="checkbox" name="presenca1" value="a1" id="a1">
                                     <label for="a1"></label>
@@ -39,48 +41,40 @@
                                     <input type="checkbox" name="presenca1" value="a3" id="a3">
                                     <label for="a3"></label>
                                 </td>
+                                -->
+                                <td>
+                                    <ul>
+                                        <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
+                                            <li class="action-btn">
+                                                <a href="{{ route('participantes.edit', $value->id) }}" class="waves-effect btn-floating blue">
+                                                    <i class="material-icons">edit</i>
+                                                </a>
+                                            </li>
+                                        </div>
+                                        <div class="col s2" style="margin-top:-5px !important;">
+                                            <li class="action-btn">
+                                                <form action="{{ route('participantes.destroy', $value->id) }}" method="POST">
+                                                    {{ method_field('DELETE') }}
+                                                    {{ csrf_field() }}
+                                                    <button type="submit" class="waves-effect btn-floating red">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </td>
+                                <td>{{ $value->instituition }}</td>
+
                             </tr>
-                            <tr>
-                                <td>Joel</td>
-                                <td>Aluno</td>
-                                <td>jfsilva@inf.ufsm.br</td>
-                                <td>123456789</td>
-                                <td>
-                                    <input type="checkbox" name="presenca2" value="a4" id="a4">
-                                    <label for="a4"></label>
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="presenca2" value="a5" id="a5">
-                                    <label for="a5"></label>
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="presenca2" value="a6" id="a6">
-                                    <label for="a6"></label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>João Vitor</td>
-                                <td>Aluno</td>
-                                <td>jvmeller@inf.ufsm.br</td>
-                                <td>123456789</td>
-                                <td>
-                                    <input type="checkbox" name="presenca3" value="a7" id="a7">
-                                    <label for="a7"></label>
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="presenca3" value="a8" id="a8">
-                                    <label for="a8"></label>
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="presenca3" value="a9" id="a9">
-                                    <label for="a9"></label>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            @endforeach
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+        <!--
             <div class="row" style="padding-top: 20px;">
                 <div class="col s12">
                     <button class="btn blue accent-2" type="submit" name="action">Salvar
@@ -89,13 +83,14 @@
                     </button>
                 </div>
             </div>
-            <div class="row right">
-                <div class="fixed-action-btn action-btn" id="form-participante">
-                    <a href="participantes/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
-                        <i class="material-icons">add</i>
-                    </a>
-                </div>
+-->
+        <div class="row right">
+            <div class="fixed-action-btn action-btn" id="form-participante">
+                <a href="participantes/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
+                    <i class="material-icons">add</i>
+                </a>
             </div>
         </div>
     </div>
-@endsection
+</div>
+@endsection 

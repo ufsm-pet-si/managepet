@@ -6,16 +6,19 @@
                     <img src="{{ asset('images/avatar/avatar-7.png') }}" alt="" class="circle responsive-img valign profile-image cyan">
                 </div>
                 <div class="col col s8 m8 l8">
-                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">John Doe
-                    <!-- 
-                    @if (Auth::guest())
-                    @else
-                        {{ Auth::user()->name }}
-                    @endif
-                    -->
+                    <p class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" data-activates="profile-dropdown-nav">
+                        @if (!Auth::guest())
+                            {{ Auth::user()->name }}
+                        @else
+                            Faça login
+                        @endif
                         <i class="mdi-navigation-arrow-drop-down right"></i>
-                    </a>
-                    <p class="user-roal">Administrator</p>
+                    </p>
+                    <p class="user-roal">
+                        @if (!Auth::guest())
+                            Olá {{ Auth::user()->type }}(a)
+                        @endif
+                    </p>            
                 </div>
             </div>
         </li>
@@ -42,12 +45,16 @@
                             </a>
                             <div class="collapsible-body">
                                 <ul>
+				    <li class="item-menu">
+                                        <a href="{{'/categories'}}">Categorias</a>
+                                    </li>
                                     <li class="item-menu">
                                         <a href="{{'/atividades'}}" >Edições</a>
                                     </li>
-                                    <li class="item-menu">
-                                        <a href="{{'/categories'}}">Categorias</a>
+				    <li class="item-menu">
+                                        <a href="{{'/participantes'}}">Participantes</a>
                                     </li>
+                                    
                                 </ul>
                             </div>
                         </li>

@@ -6,17 +6,24 @@
                 <ul class="left">
                     <li>
                         <h1 class="logo-wrapper">
-                            <a href="index-manage.html" class="brand-logo darken-1">
+                            <a href="/home" class="brand-logo darken-1">
                                 <span class="logo-text hide-on-med-and-down">Manage PET</span>
                             </a>
                         </h1>
                     </li>
                 </ul>
                 <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button">
-                            Bem vindo(a) admin
+                    @if (!Auth::guest())
+                        <a href="/logout" class="waves-effect waves-block waves-light profile-button">
+                            Sair
                         </a>
+                    @else
+                        <a href="/login" class="waves-effect waves-block waves-light profile-button">
+                            Login
+                        </a>
+                    @endif
+                    <li>
+                        
                     </li>
                 </ul>
             </div>

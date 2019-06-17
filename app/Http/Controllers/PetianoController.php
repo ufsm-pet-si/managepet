@@ -46,14 +46,15 @@ class PetianoController extends Controller
     {
        // validate
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
         ]);
 
          // store
         User::create([
             'name' => $request->input('name'),
+            'pet' => $request->input('pet'),            
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'type' => $request->input('type'),
@@ -87,7 +88,7 @@ class PetianoController extends Controller
      */
     public function edit($id)
     {
-        // get the category
+        // get the user
         $searchedUser = User::find($id);
 
         // show the edit form and pass the petiano
@@ -106,11 +107,16 @@ class PetianoController extends Controller
         // validate
         $request->validate([
             'name' => 'required',
-            'email' => 'required'
+            'email' => 'required',
         ]);
 
-        // store
-        $petiano->update($request->all());
+        $petiano->update([
+            'name' => $request->input('name'),
+            'pet' => $request->input('pet'),
+            'email' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'type' => $request->input('type'),
+        ]);
 
         // redirect
         Session::flash('message', ['text'=>"Petiano(a) atualizado com sucesso!", 'type'=>"success"]);
