@@ -30,12 +30,6 @@
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="pet" name="pet" type="text"  value="{{ Auth::user()->pet }}" readonly=“true” style="color: #cccccc">
-                  <label for="pet">PET</label>
-                </div>
-              </div>
-              <div class="row">
-                <div class="input-field col s12">
                   <input id="email-petiano" name="email" type="email" class="validate{{ $errors->has('email') ? ' invalid' : '' }}" value="{{ old('email', isset($petiano) ? $petiano->email : '') }}" required>
                   <label for="email-petiano">Email</label>
                   @if ($errors->has('email'))

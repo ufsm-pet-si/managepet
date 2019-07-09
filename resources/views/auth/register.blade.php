@@ -68,17 +68,6 @@
                             </div>
                             <div class="row margin">
                                 <div class="input-field col s12">
-                                    <i class="material-icons prefix pt-2">fingerprint</i>
-                                    <select name='pet' for="pet">
-                                        <option value='UFSM - Sistemas de Informação'>UFSM - Sistemas de Informação</option>
-                                        <option value='UFSM - Odontologia'>UFSM - Odontologia</option>
-                                        <option value='UFSM - Zootecnia'>UFSM - Zootecnia</option>
-                                    </select>
-                                    <label for="pet">{{ __('Selecione seu PET') }}</label>
-                                </div>
-                            </div>
-                            <div class="row margin">
-                                <div class="input-field col s12">
                                     <i class="material-icons prefix pt-2">mail_outline</i>
                                     <input id="email" type="email" class="validate{{ $errors->has('email') ? ' invalid' : '' }}" name="email" value="{{ old('email') }}" required>
                                     <label for="email">{{ __('E-Mail') }}</label>

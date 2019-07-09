@@ -53,8 +53,7 @@ class PetianoController extends Controller
 
          // store
         User::create([
-            'name' => $request->input('name'),
-            'pet' => $request->input('pet'),            
+            'name' => $request->input('name'),      
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'type' => $request->input('type'),
@@ -112,7 +111,6 @@ class PetianoController extends Controller
 
         $petiano->update([
             'name' => $request->input('name'),
-            'pet' => $request->input('pet'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'type' => $request->input('type'),
