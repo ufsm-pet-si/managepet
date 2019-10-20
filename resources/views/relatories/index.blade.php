@@ -17,35 +17,39 @@
             </div>
             <div class="col s12">
               <div class="row">
-                <div class="col s6 m6 l6">
+                <!-- <div class="col s6 m6 l6">
                   <div class="card-panel light-blue accent-2 white-text center" id="Acessos" onclick="modalChart();">
                     <h5><i class="material-icons small">person_outline</i> Acessos</h5>
                     <h5>566</h5>
                     <h6><i class="material-icons small">expand_less</i> 15% from yesterday</h6>
                   </div>
+                </div> -->
+
+                <div class="col s6 m6 l6">
+                  <div class="card-panel  light-blue accent-2 white-text center">
+                    <h5><i class="material-icons small">person_outline</i> Usuários do sistema</h5>
+                    <h5>@yield('numUsers')</h5>
+                  </div>
                 </div>
 
                 <div class="col s6 m6 l6">
                   <div class="card-panel teal accent-4 white-text center">
-                    <h5><i class="material-icons small">trending_up</i> Inscritos</h5>
-                    <h5>806.52</h5>
-                    <h6><i class="material-icons small">expand_less</i> 80% from yesterday</h6>
+                    <h5><i class="material-icons small">person_outline</i> Participantes das atividades</h5>
+                    <h5>@yield('numParticipants')</h5>
                   </div>
                 </div>
 
                 <div class="col s6 m6 l6">
                   <div class="card-panel orange darken-2 white-text center">
-                    <h5>Confirmações</h5>
-                    <h5>1806</h5>
-                    <h6><i class="material-icons small">expand_more</i> 3% from last month</h6>
+                    <h5>Edições</h5>
+                    <h5>@yield('numEditions')</h5>
                   </div>
                 </div>
 
                 <div class="col s6 m6 l6">
                   <div class="card-panel red white-text center">
-                    <h5>Desistências</h5>
-                    <h5>8990.63</h5>
-                    <h6><i class="material-icons small">expand_less</i> 70% last month</h6>
+                    <h5>Outra coisa</h5>
+                    <h5>89%</h5>
                   </div>
                 </div>
 
