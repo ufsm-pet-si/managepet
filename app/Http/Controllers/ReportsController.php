@@ -9,7 +9,7 @@ use App\Participant;
 use View;
 use Session;
 
-class RelatoriesController extends Controller
+class ReportsController extends Controller
 {
         /**
      * Display a listing of the resource.
