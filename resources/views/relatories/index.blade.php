@@ -27,29 +27,29 @@
 
                 <div class="col s6 m6 l6">
                   <div class="card-panel  light-blue accent-2 white-text center">
-                    <h5><i class="material-icons small">person_outline</i> Usuários do sistema</h5>
-                    <h5>@yield('numUsers')</h5>
+                    <h5><i class="material-icons small">person_outline</i> Nº de Petianos</h5>
+                    <h5>{{count($petianos) }}</h5>
                   </div>
                 </div>
 
                 <div class="col s6 m6 l6">
                   <div class="card-panel teal accent-4 white-text center">
-                    <h5><i class="material-icons small">person_outline</i> Participantes das atividades</h5>
-                    <h5>@yield('numParticipants')</h5>
+                    <h5><i class="material-icons small">person_outline</i>  Nº de Participantes</h5>
+                    <h5>{{count($participantes) }}</h5>
                   </div>
                 </div>
 
                 <div class="col s6 m6 l6">
                   <div class="card-panel orange darken-2 white-text center">
-                    <h5>Edições</h5>
-                    <h5>@yield('numEditions')</h5>
+                    <h5> Nº de Edições</h5>
+                    <h5>{{count($activities) }}</h5>
                   </div>
                 </div>
 
                 <div class="col s6 m6 l6">
                   <div class="card-panel red white-text center">
                     <h5>Outra coisa</h5>
-                    <h5>89%</h5>
+                    <h5>Não sei</h5>
                   </div>
                 </div>
 
