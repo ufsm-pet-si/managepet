@@ -24,6 +24,7 @@
                             <tr>
                                 <td>{{ $value->title }}</td>
                                 <td>{{ $value->category->name }}</td>
+                                <td>{{ str_limit($value->description, $limit = 50, $end = '...') }}</td>
                                 <td>
                                     <ul>
                                         <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
@@ -53,8 +54,6 @@
                                         </div>
                                     </ul>
                                 </td>
-                                {{--<td>{{ str_limit($value->description, $limit = 200, $end = '...') }}</td>--}}
-                                <td>{{ $value->description }}</td>
                             </tr>
                             @endforeach
                         </tbody>
