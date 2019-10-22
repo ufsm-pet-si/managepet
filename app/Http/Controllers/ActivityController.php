@@ -58,12 +58,14 @@ class ActivityController extends Controller
         // store
         $id_activity = Activity::create($request->all())->id;
 
-        ActivityDay::create([
-            'activity_id'      => $id_activity,
-            'date'         => Input::get('date'),
-            'start_hour'   => Input::get('start_hour'), 
-            'duration'      => Input::get('duration')
-        ]);
+        for ($count = 1; $count <= Input::get('number_days'); $count++) {
+            ActivityDay::create([
+                'activity_id'  => $id_activity,
+                'date'         => Input::get('date_'. $count),
+                'start_hour'   => Input::get('start_hour_'. $count), 
+                'duration'     => Input::get('duration_'. $count)
+            ]);
+        }
 
         // redirect
         Session::flash('message', ['text'=>"Atividade criada com sucesso!", 'type'=>"success"]);
@@ -95,7 +97,7 @@ class ActivityController extends Controller
     public function edit($id)
     {
         // get the activity
-        $searchedActivity = Activity::find($id)->first();
+        $searchedActivity = Activity::find($id);
         // get all categories
         $categories = Category::all();
         // load the edit form (views/activities/form.blade.php)

@@ -47,7 +47,7 @@ class ActivityDaysController extends Controller
         Category::create($request->all());
 
         // redirect
-        Session::flash('message', ['text'=>"Categoria criada com sucesso!", 'type'=>"success"]);
+        Session::flash('message', ['text'=>"Dia de atividade criado com sucesso!", 'type'=>"success"]);
         return redirect()->route('categories.index');
     }
 
@@ -100,7 +100,7 @@ class ActivityDaysController extends Controller
         $category->update($request->all());
 
         // redirect
-        Session::flash('message', ['text'=>"Categoria atualizada com sucesso!", 'type'=>"success"]);
+        Session::flash('message', ['text'=>"Dia de atividade atualizado com sucesso!", 'type'=>"success"]);
         return redirect()->route('categories.index');
     }
 
@@ -116,7 +116,7 @@ class ActivityDaysController extends Controller
         $category->delete();
 
         // redirect
-        Session::flash('message', ['text'=>"Categoria removida com sucesso!", 'type'=>"success"]);
+        Session::flash('message', ['text'=>"Dia de atividade criado com sucesso!", 'type'=>"success"]);
         return redirect()->route('categories.index');
     }
 }
