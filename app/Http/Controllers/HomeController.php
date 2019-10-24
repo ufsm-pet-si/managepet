@@ -36,10 +36,12 @@ class HomeController extends Controller
     }
     
     public function getCertificate($matricula) {
+        // read the base certificate template
         $file = public_path('certificates/template/certificate_template.docx');
 
         $phpword = new TemplateProcessor($file);
 
+        // fill the matching fields
         $phpword->setValue('${nome}', 'Fulano');
         $phpword->setValue('${atividade}', 'DivulgaPET');
         $phpword->setValue('${dia}', '23');
@@ -47,29 +49,35 @@ class HomeController extends Controller
         $phpword->setValue('${ano}', '2019');
         $phpword->setValue('${horas}', '2:30');
 
-        $filename = 'certificates/generated/'.$matricula;
+        $filepath = 'certificates/generated/'.$matricula;
 
-        $phpword->saveAs($filename. '.docx');
+        // save the filled document
+        $phpword->saveAs($filepath. '.docx');
 
-        $this->downloadCertificate($filename);
+        // convert the certificate (.docx -> .pdf) and save it in public/certificates/generated/'$filepath'.pdf
+        $this->downloadCertificate($filepath);
 
-        return response()->file($filename. '.pdf');
+        // return the certificate file (as pdf) to the client
+        return response()->file($filepath. '.pdf');
     }
 
-    public function downloadCertificate($filename) {
-    $api = new Api(
-        /*env("CLOUD_CONVERT_KEY")); */ // hey, coloque a key no seu arquivo .env e apague a linha abaixo!!!
-        'AIU6sFPgPoNbdLihROcFnFMWMZYg3uR6fhaE0gBkeZ92U1iza8KW7dRkagfPcUhP');
-
+    /**
+     * @input $filepath (path to a .docx file)
+     * Donwload the respective .docx file in .pdf format and save it as '$filepath'.pdf
+     * @return void
+     */
+    public function downloadCertificate($filepath) {
+        $api = new Api(/*env("CLOUD_CONVERT_KEY")); */ // hey, add the CLOUD_CONVERT_KEY in your .env file and remove fhe following line!!!
+            'AIU6sFPgPoNbdLihROcFnFMWMZYg3uR6fhaE0gBkeZ92U1iza8KW7dRkagfPcUhP');
         $api
             ->convert([
                 "input" => "upload",
                 "inputformat" => "docx",
                 "outputformat" => "pdf",
-                "file" => fopen($filename. '.docx', 'r'),
+                "file" => fopen($filepath. '.docx', 'r'),
             ])
             ->wait()
-            ->download($filename. '.pdf');
+            ->download($filepath. '.pdf');
     }
 
     public function relatories(){
