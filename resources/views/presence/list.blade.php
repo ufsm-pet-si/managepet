@@ -28,7 +28,9 @@
                                 <td>{{ $value->email }}</td>
                                 <td>{{ $value->matricula }}</td>
                                 <td>{{ $value->instituition }}</td>
-
+                                <!-- <td>
+                                    <input type="hidden" id="{{ $value->matricula }}" name="idMtr" value="{{ $value->matricula }}">
+                                </td> -->
                                 <td>
                                 @foreach($activityDays as $day => $value)
                                     <input type="checkbox" name="cadastro" value="a1" id="{{$value->matricula}}">
@@ -50,14 +52,14 @@
                     <button class="btn grey" type="submit" name="action">Cancelar
                     </button>
                 </div>
-            </div>
+            <!-- </div>
         <div class="row right">
             <div class="fixed-action-btn action-btn" id="form-participante">
                 <a href="participantes/create" class="btn-floating blue accent-2 btn-large waves-effect waves-light right">
                     <i class="material-icons">add</i>
                 </a>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 @endsection

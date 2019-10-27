@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class PresenceController extends Controller
 {
-    protected $table = 'presence';
     /**
      * Display a listing of the resource.
      *

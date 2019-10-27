@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use View;
 use Session;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,7 +23,7 @@ class PetianoController extends Controller
         return View::make('petianos.list')->with('petianos', $petianos);
     }
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

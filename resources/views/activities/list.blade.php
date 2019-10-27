@@ -28,8 +28,8 @@
                                     <ul>
                                         <div class="col s2" style="margin-right:30px;margin-top:-5px !important;">
                                             <li class="action-btn">
-                                                <a href="{{ route('subscription.index', $value->id) }}" class="waves-effect btn-floating blue">
-                                                    <i class="material-icons">add</i>
+                                                <a href="{{ route('subscription.index', $value->id) }}" class="waves-effect btn-floating orange">
+                                                    <i class="material-icons">person_add</i>
                                                 </a>
                                             </li>
                                         </div>

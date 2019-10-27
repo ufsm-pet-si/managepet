@@ -6,8 +6,6 @@ use App\Participant;
 use App\Subscription;
 use View;
 use Session;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -33,7 +31,7 @@ class SubscriptionController extends Controller
     public function create()
     {
         // load the create form (views/categories/form.blade.php)
-        return View::make('categories.form');
+        // return View::make('categories.form');
     }
 
     /**
@@ -42,13 +40,10 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Subscription $subscription)
+    public function store(Request $request, Activity $activity, Participant $participant)
     {
         // store
-        if (
-        Subscription::create($request->input('cadastro'))) {
-            Session::flash('message', ['text'=>"EITA", 'type'=>"success"]);
-        }
+        
         // redirect
         Session::flash('message', ['text'=>"Usuário cadastrado com sucesso!", 'type'=>"success"]);
         return redirect()->route('subscription.index');

@@ -28,7 +28,6 @@
                                 <td>{{ $value->email }}</td>
                                 <td>{{ $value->matricula }}</td>
                                 <td>{{ $value->instituition }}</td>
-
                                 <td>
                                     <input type="checkbox" name="cadastro" value="a1" id="{{$value->matricula}}">
                                     <label for="{{$value->matricula}}"></label>
