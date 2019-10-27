@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  var days = 1;
+
 
   $('select').material_select();
   
@@ -10,16 +12,37 @@ $(document).ready(function () {
   });
 
   $("#add_date").on('click', function(){
-    $("#list_dates").append(
-      "<div class='row'><div class='input-field col s3'>"+
-      "<input name='data' type='date'></div>"+
-      "<div class='input-field col s3'>"+
-      "<input name='hora_inicio' id='hora_inicio' type='text'/>"+
-      "<label>Hora início</label></div>"+
-      "<div class='input-field col s3'>"+
-      "<input name='duracao' id='duracao' type='text'/>"+
-      "<label>Duração total</label></div>"+
-      "<div><a href='#' id='replicar'>Replicar hora e duração</a></div></div>"
-    );
+    days++;
+    $('#number_days').val(days);
+    $("#list_dates").append(`
+      <div class="row" id="row_${days}">
+        <div class="input-field col s3">
+          <input name="date_${days}" type="date">
+        </div>
+        <div class="input-field col s3">
+          <input name="start_hour_${days}" type="text"/>
+          <label for="start_hour_${days}">Hora início</label>
+        </div>
+        <div class="input-field col s3">
+          <input name="duration_${days}" type="text"/>
+          <label for="duration_${days}">Duração total</label>
+        </div>
+        <div>
+          <a id="replicar_${days}" class="link replicar">Replicar hora e duração</a>
+        </div>
+      </div> 
+      `);
   });
+
+  $(document).on("click", ".replicar", function() {
+    var rowId = ($(this).attr('id')).replace('replicar_', '');
+    var previousRowId = Number(rowId) - 1;
+    var $previousRow = $(`#row_${previousRowId}`);
+    var start_hour = $previousRow.find(`input[name='start_hour_${previousRowId}']`).val();
+    var duration = $previousRow.find(`input[name='duration_${previousRowId}']`).val();
+    var $currentRow = $(`#row_${rowId}`);
+    $currentRow.find(`input[name='start_hour_${rowId}']`).val(start_hour);
+    $currentRow.find(`input[name='duration_${rowId}']`).val(duration);
+  });
+
 });

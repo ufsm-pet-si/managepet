@@ -19,7 +19,7 @@ class CreateActivityDaysTable extends Migration
             $table->time('start_hour');
             $table->string('duration', 5);
             $table->integer('activity_id')->unsigned();
-            $table->foreign('activity_id')->references('id')->on('activities');           
+            $table->foreign('activity_id')->references('id')->on('activities')->onDelete('cascade');           
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@
                         @if (!Auth::guest())
                             {{ Auth::user()->name }}
                         @else
-                            Faça login, parça
+                            Faça login
                         @endif
                         <i class="mdi-navigation-arrow-drop-down right"></i>
                     </p>

@@ -51,7 +51,7 @@
                         @csrf
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <h5 class="ml-4">{{ __('Register') }}</h5>
+                                    <h5 class="ml-4">{{ __('Registre seu PET') }}</h5>
                                 </div>
                             </div>
                             <div class="row margin">
@@ -72,7 +72,7 @@
                                     <input id="email" type="email" class="validate{{ $errors->has('email') ? ' invalid' : '' }}" name="email" value="{{ old('email') }}" required>
                                     <label for="email">{{ __('E-Mail') }}</label>
                                     @if ($errors->has('email'))
-                                        <span class="red-text">
+                                    <span class="red-text">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                     @endif
