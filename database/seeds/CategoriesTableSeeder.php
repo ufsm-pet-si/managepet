@@ -57,12 +57,12 @@ class CategoriesTableSeeder extends Seeder
             ]);
             
         for ($i = 0; $i < count($names_pesquisa); $i++)
-        DB::table('categories')->insert([
-            'name'          => $names_pesquisa[$i],
-            'description'   => $descriptions_pequisa[$i],
-            'search_center' => 'Pesquisa',
-            'type'          => $types_pesquisa[$i]
-        ]);    
+            DB::table('categories')->insert([
+                'name'          => $names_pesquisa[$i],
+                'description'   => $descriptions_pequisa[$i],
+                'search_center' => 'Pesquisa',
+                'type'          => $types_pesquisa[$i]
+            ]);    
         
         
         for ($i = 0; $i < count($names_extensao); $i++)
