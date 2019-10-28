@@ -16,9 +16,9 @@ class CreatePresencesTable extends Migration
         Schema::create('presences', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('activity_day_id')->unsigned();
-            $table->foreign('activity_day_id')->references('id')->on('activity_days');
+            $table->foreign('activity_day_id')->references('id')->on('activity_days')->onDelete('cascade');
             $table->integer('participant_id')->unsigned();
-            $table->foreign('participant_id')->references('id')->on('participants');
+            $table->foreign('participant_id')->references('id')->on('participants')->onDelete('cascade');
 	        $table->boolean('presence_mark');
             $table->timestamps();
         });

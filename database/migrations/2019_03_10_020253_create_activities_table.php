@@ -19,7 +19,7 @@ class CreateActivitiesTable extends Migration
             $table->string('speaker')->nullable();
             $table->string('description', 255)->nullable();
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
