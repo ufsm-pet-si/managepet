@@ -52,28 +52,36 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        // $activity = Activity::where('id', '=', $request->activityId)->first();
-        // print_r($activity);
         $participantIds = $request->input('subscriptions');
-        if ($participantIds) {
-            foreach ($participantIds as $participantId) {
-                // var_dump($participantId);
-                Subscription::create([
-                    'activity_id'   => $request->activityId,
-                    'participant_id' => $participantId
-                ]);
+        $activitySubscriptions = Subscription::where('activity_id', '=', $request->activityId)->get();
+        if (($participantIds = $request->input('subscriptions')) !== null) {
+            // delete subscriptions that were unmarked
+            foreach($activitySubscriptions as $aSubscription) {
+                if (!in_array($aSubscription->participant_id, $participantIds)) {
+                    $aSubscription->delete();
+                }
             }
-            // var_dump($request->all());
-        } else {
-            Session::flash('message', ['text'=>"Selecione participantes para inscrevê-los na atividade!", 'type'=>"failure"]);
-            // return redirect()->route('subscription.index')->with('activity', $activity);
-        }
 
-        // store
+            // store and/or update subscriptions marked
+            foreach ($participantIds as $participantId) {
+                if ($participant = Subscription::where('participant_id', '=', $participantId)->first()) {
+                    $participant->update($request->all());
+                } else {
+                    Subscription::create([
+                        'activity_id'   => $request->activityId,
+                        'participant_id' => $participantId
+                    ]);
+                }
+            }
+            Session::flash('message', ['text'=>"Participantes inscritos com sucesso!", 'type'=>"success"]);
+        } else {
+            // delete every subscription of the checkbox input array comes empty (null)
+            $activitySubscriptions->delete();
+            Session::flash('message', ['text'=>"Inscrições removidas com sucesso!", 'type'=>"success"]);
+        }
         
         // redirect
-        Session::flash('message', ['text'=>"Participantes inscritos com sucesso!", 'type'=>"success"]);
-        return redirect()->route('subscription.index', ['activityId' => $request->activityId]);
+        return redirect()->route('atividades.index');
     }
 
     /**
