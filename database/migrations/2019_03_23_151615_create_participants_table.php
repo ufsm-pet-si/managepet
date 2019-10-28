@@ -18,7 +18,7 @@ class CreateParticipantsTable extends Migration
             $table->string('name', 50);
             $table->string('type', 20);
             $table->string('email', 45);
-            $table->string('matricula', 12);
+            $table->string('matricula', 12)->unique();
             $table->string('instituition', 12);
             $table->integer('activity_id')->unsigned();
             $table->foreign('activity_id')->references('id')->on('activities');

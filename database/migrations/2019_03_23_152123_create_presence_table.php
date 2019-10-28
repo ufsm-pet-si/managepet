@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePresenceTable extends Migration
+class CreatePresencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePresenceTable extends Migration
      */
     public function up()
     {
-        Schema::create('presence', function (Blueprint $table) {
+        Schema::create('presences', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('activity_day_id')->unsigned();
             $table->foreign('activity_day_id')->references('id')->on('activity_days');
@@ -31,6 +31,6 @@ class CreatePresenceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('presence');
+        Schema::dropIfExists('presences');
     }
 }
