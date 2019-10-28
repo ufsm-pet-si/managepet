@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Participant;
 use App\Activity;
 use App\Presence;
+use Session;
 use Illuminate\Http\Request;
 use \CloudConvert\Api;
 use \PhpOffice\PhpWord\TemplateProcessor;
@@ -47,6 +48,11 @@ class HomeController extends Controller
 
         $matricula = $request->input('matricula');
 
+        $activities = $this->getActivities($matricula);
+        return View::make('certificates.index')->with(['activities' => $activities, 'matricula' => $matricula]);
+    }
+
+    public function getActivities($matricula) {
         $activities = array();
         $searchedParticipant = Participant::where('matricula', $matricula)->firstOrFail();
         if ($searchedParticipant) {
@@ -54,7 +60,7 @@ class HomeController extends Controller
                 array_push($activities, $subscription->activity);
             }
         }
-        return View::make('certificates.index')->with(['activities' => $activities, 'matricula' => $matricula]);
+        return $activities;
     }
     
     public function getCertificate($matricula, $activity_id) {
@@ -74,6 +80,13 @@ class HomeController extends Controller
                 array_push($dates, date_format(date_create_from_format('Y-m-d', $activityDay->date), 'd/m/Y'));
             }
         }
+        if ($duration == 0) {
+            $message = "Impossível gerar certificado. Você possui zero horas de presenças nessa atividade.";
+            Session::flash('message', ['text' => $message, 'type'=>"error" ]);
+            $activities = $this->getActivities($matricula);
+            return View::make('certificates.index')->with(['activities' => $activities, 'matricula' => $matricula, 'error' => $message]);
+        }
+
         // cast dates to a single string
         $dateStr = '';
         foreach($dates as $date) 
