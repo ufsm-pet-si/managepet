@@ -51,7 +51,7 @@ class ActivityController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'          => 'required',
+            'title'       => 'required',
             'category_id' => 'required',
         ]);
 
@@ -133,7 +133,7 @@ class ActivityController extends Controller
         $activity->date = Input::get('data');
         $activity->start_time = Input::get('hora_inicio');
         $activity->duration = Input::get('duracao');
-        $activity->save();        
+        $activity->save();
 
         // redirect
         Session::flash('message', ['text'=>"Atividade atualizada com sucesso!", 'type'=>"success"]);

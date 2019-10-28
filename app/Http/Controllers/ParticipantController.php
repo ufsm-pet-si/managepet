@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Participant;
 use View;
 use Session;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 
 class ParticipantController extends Controller

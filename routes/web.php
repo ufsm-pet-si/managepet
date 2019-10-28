@@ -36,3 +36,5 @@ Route::get('/certificados/{matricula}', 'HomeController@getCertificate')->name('
 Route::get('/relatorios', 'HomeController@relatories')->name('relatories');
 //inscrição nas atividades
 Route::resource('subscription', 'SubscriptionController');
+//presença dos inscritos
+Route::resource('presence', 'PresenceController');

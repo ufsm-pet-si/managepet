@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\User;
 use View;
 use Session;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,7 +23,7 @@ class PetianoController extends Controller
         return View::make('petianos.list')->with('petianos', $petianos);
     }
 
-        /**
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -44,14 +42,14 @@ class PetianoController extends Controller
      */
     public function store(Request $request)
     {
-       // validate
+        // validate
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
 
-         // store
+        // store
         User::create([
             'name' => $request->input('name'),      
             'email' => $request->input('email'),
