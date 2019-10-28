@@ -51,13 +51,19 @@ class SubscriptionController extends Controller
 
             // store and/or update subscriptions marked
             foreach ($participantIds as $participantId) {
-                if ($participant = Subscription::where('participant_id', '=', $participantId)->first()) {
-                    $participant->update($request->all());
-                } else {
+                // get participant subscription in the specific activity
+                $participantSubscription = Subscription::where('participant_id', $participantId)->get();
+                $participantSubscription = $participantSubscription->where('activity_id', $request->activityId)->first();
+
+                // if the participant has no subscription stored in database, create a new one
+                if (!$participantSubscription) {
                     Subscription::create([
                         'activity_id'   => $request->activityId,
                         'participant_id' => $participantId
                     ]);
+                } else {
+                    var_dump($participantSubscription);
+                    $participantSubscription->update($request->all());
                 }
             }
             Session::flash('message', ['text'=>"Participantes inscritos com sucesso!", 'type'=>"success"]);
