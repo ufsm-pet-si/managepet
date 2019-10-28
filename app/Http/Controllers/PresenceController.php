@@ -31,11 +31,12 @@ class PresenceController extends Controller
         
         $participantsPresences = array();
         foreach($activityDays as $day) {
-            $presence = Presence::where('activity_day_id', '=', $day->id)->first();
-            if ($presence)
-                array_push($participantsPresences, $presence->activity_day_id . '_' . $presence->participant_id);
+            $presences = Presence::where('activity_day_id', '=', $day->id)->get();
+            foreach($presences as $presence)
+                if ($presence)
+                    array_push($participantsPresences, $presence->activity_day_id . '_' . $presence->participant_id);
         }
-
+        
         // load views and pass information to populate it
         return View::make('presence.list')
             ->with('participants', $participants)
@@ -52,18 +53,47 @@ class PresenceController extends Controller
      */
     public function store(Request $request)
     {
-        // store
-        foreach ($request->input('presences') as $presence) {
-            $presence = explode('_', $presence);
-            Presence::create([
-                'activity_day_id'  => $presence[0],
-                'participant_id'   => $presence[1],
-                'presence_mark'    => true
-            ]);
+        $activityDays = ActivityDay::where('activity_id', '=', $request->activityId)->get();
+        
+        // get all presences for the target activity
+        $allPresences = array();
+        foreach ($activityDays as $activityDay)
+            array_push($allPresences, Presence::where('activity_day_id', $activityDay->id)->get());
+
+        $presenceIds = array();
+        foreach ($allPresences as $daysPresences)
+            foreach ($daysPresences as $dayPresence)
+                $presenceIds[$dayPresence->activity_day_id . '_' . $dayPresence->participant_id] = $dayPresence;
+        
+        // for each instance coming from the input, check if it is in the array populated with the instances from database
+        if (($inputPresences = $request->input('presences')) !== null) {
+            foreach ($inputPresences as $inputPresence) {
+                $presence = explode('_', $inputPresence);
+
+                // if the instance is in the array, remove it from the array
+                if (array_key_exists($inputPresence, $presenceIds)) {
+                    unset($presenceIds[$inputPresence]);
+                } else {
+                    Presence::create([
+                        'activity_day_id'  => $presence[0],
+                        'participant_id'   => $presence[1],
+                        'presence_mark'    => true
+                    ]);
+                }
+            }
+
+            // remaining records in the array will be deleted
+            foreach ($presenceIds as $presenceId)
+                $presenceId->delete();
+
+            Session::flash('message', ['text'=>"Presenças gravadas com sucesso!", 'type'=>"success"]);
+        } else {
+            foreach($activityDays as $activityDay)
+                Presence::where('activity_day_id', '=', $activityDay->id)->get()->each->delete();
+            Session::flash('message', ['text'=>"Presenças removidas com sucesso!", 'type'=>"success"]);
         }
         
         // redirect
-        Session::flash('message', ['text'=>"Presenças gravadas com sucesso!", 'type'=>"success"]);
-        return redirect()->route('presence.index', ['activityId' => $request->activityId]);
+        return redirect()->route('atividades.index');
     }
 }
