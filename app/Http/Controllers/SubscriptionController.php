@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Participant;
 use App\Subscription;
+use App\Activity;
 use View;
 use Session;
 use Illuminate\Http\Request;
@@ -15,12 +16,20 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    public function index()
+    public function index(Request $request)
     {
-        $participant = Participant::all();
+        $participants = Participant::all();
+        $activityId = $request->activityId;
+        $subscriptions = Subscription::where('activity_id', '=', $activityId)->get();
+        $participantsSubscripted = array();
+        foreach ($subscriptions as $subscription)
+            array_push($participantsSubscripted, $subscription->participant_id);
+
         // load the views and pass the participants
-        return View::make('subscription.list')->with('participants', $participant);
+        return View::make('subscription.list')
+            ->with('participants', $participants)
+            ->with('activityId', $activityId)
+            ->with('participantsSubscripted', $participantsSubscripted);
     }
     
     /**
@@ -28,10 +37,11 @@ class SubscriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($activityId, $participantId)
     {
+        var_dump('kkkk');
         // load the create form (views/categories/form.blade.php)
-        // return View::make('categories.form');
+        return View::make('categories.form');
     }
 
     /**
@@ -40,13 +50,30 @@ class SubscriptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Activity $activity, Participant $participant)
+    public function store(Request $request)
     {
+        // $activity = Activity::where('id', '=', $request->activityId)->first();
+        // print_r($activity);
+        $participantIds = $request->input('subscriptions');
+        if ($participantIds) {
+            foreach ($participantIds as $participantId) {
+                // var_dump($participantId);
+                Subscription::create([
+                    'activity_id'   => $request->activityId,
+                    'participant_id' => $participantId
+                ]);
+            }
+            // var_dump($request->all());
+        } else {
+            Session::flash('message', ['text'=>"Selecione participantes para inscrevê-los na atividade!", 'type'=>"failure"]);
+            // return redirect()->route('subscription.index')->with('activity', $activity);
+        }
+
         // store
         
         // redirect
-        Session::flash('message', ['text'=>"Usuário cadastrado com sucesso!", 'type'=>"success"]);
-        return redirect()->route('subscription.index');
+        Session::flash('message', ['text'=>"Participantes inscritos com sucesso!", 'type'=>"success"]);
+        return redirect()->route('subscription.index', ['activityId' => $request->activityId]);
     }
 
     /**
@@ -55,13 +82,13 @@ class SubscriptionController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show($participantId, $activityId)
     {
         // get the category
-        $searchedCategory = Category::find($category)->first();
+        // $searchedCategory = Category::find($category)->first();
 
         // show the view and pass the category to it
-        return View::make('categories.form')->with('category', $searchedCategory);
+        return "it sux $participantId - $activityId";
     }
 
     /**

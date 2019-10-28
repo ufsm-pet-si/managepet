@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Subscription extends Model
 {
     protected $table = 'subscription';
+    protected $fillable = ['activity_id', 'participant_id'];
     
     public function activities()
     {

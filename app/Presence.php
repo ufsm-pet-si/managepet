@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Presence extends Model
 {
     protected $table = 'presence';
+    protected $fillable = ['activity_day_id', 'participant_id', 'presence_mark'];
     
     public function subscription()
     {
