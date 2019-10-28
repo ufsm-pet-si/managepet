@@ -62,6 +62,9 @@
         </div>
       </div>
       @endif
+      @if(isset($error))
+        <span style="color: red;">{{ $error }}</span>
+      @endif
     </div>
   </div>
 </div>
