@@ -63,7 +63,7 @@ class HomeController extends Controller
 
     /**
      * @input $filepath (path to a .docx file)
-     * Donwload the respective .docx file in .pdf format and save it as '$filepath'.pdf
+     * Donwload the respective .docx file in .pdf format  through cloudConvert service, saving it as '$filepath'.pdf
      * @return void
      */
     public function downloadCertificate($filepath) {
