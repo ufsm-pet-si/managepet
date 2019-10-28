@@ -85,7 +85,7 @@ class HomeController extends Controller
 
         // fill the matching fields
         $phpword->setValue('${nome}', $searchedParticipant->name);
-        $phpword->setValue('${atividade}', Activity::find($activity_id)->title);
+        $phpword->setValue('${atividade}', Activity::findOrFail($activity_id)->title);
         $phpword->setValue('${dias}', $dateStr);
         $phpword->setValue('${horas}', $duration);
 
