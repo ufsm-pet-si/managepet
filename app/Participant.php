@@ -10,6 +10,11 @@ class Participant extends Model
     
     public function subscriptions()
     {
-        return $this->hasMany('App\Subscription', 'participant_id');
+        return $this->hasMany('App\Subscription');
+    }
+
+    public function presences()
+    {
+        return $this->hasMany('App\Presence');
     }
 }

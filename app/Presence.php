@@ -13,4 +13,14 @@ class Presence extends Model
     {
         return $this->belongsTo('App\Subscription');
     }
+
+    public function participant()
+    {
+        return $this->belongsTo('App\Participant');
+    }
+
+    public function activityDay()
+    {
+        return $this->belongsTo('App\ActivityDay');
+    }
 }

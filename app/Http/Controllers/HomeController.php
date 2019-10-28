@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Participant;
+use App\Activity;
+use App\Presence;
 use Illuminate\Http\Request;
 use \CloudConvert\Api;
 use \PhpOffice\PhpWord\TemplateProcessor;
+use View;
 
 class HomeController extends Controller
 {
@@ -35,21 +39,57 @@ class HomeController extends Controller
         return view('certificates/index');
     }
     
-    public function getCertificate($matricula) {
+    public function listCertificates(Request $request){
+        // validate
+        $request->validate([
+            'matricula' => 'required|string|max:255',
+        ]);
+
+        $matricula = $request->input('matricula');
+
+        $activities = array();
+        $searchedParticipant = Participant::where('matricula', $matricula)->firstOrFail();
+        if ($searchedParticipant) {
+            foreach($searchedParticipant->subscriptions as $subscription) {
+                array_push($activities, $subscription->activity);
+            }
+        }
+        return View::make('certificates.index')->with(['activities' => $activities, 'matricula' => $matricula]);
+    }
+    
+    public function getCertificate($matricula, $activity_id) {
+        // find the participant and his presences in the activity of id $activity_id
+        $searchedParticipant = Participant::where('matricula', $matricula)->firstOrFail();
+        $presences = $searchedParticipant->presences;
+        // get the activity_days
+        $activitiesDay = array();
+        foreach($presences as $presence)
+            array_push($activitiesDay, $presence->activityDay);
+        // get dates and compute total duration
+        $dates = array();
+        $duration = 0;
+        foreach($activitiesDay as $activityDay) {
+            if ($activityDay->activity_id == $activity_id) {
+                $duration += $activityDay->duration;
+                array_push($dates, date_format(date_create_from_format('Y-m-d', $activityDay->date), 'd/m/Y'));
+            }
+        }
+        // cast dates to a single string
+        $dateStr = '';
+        foreach($dates as $date) 
+            $dateStr = $dateStr . $date . ', ';
+
         // read the base certificate template
         $file = public_path('certificates/template/certificate_template.docx');
-
         $phpword = new TemplateProcessor($file);
 
         // fill the matching fields
-        $phpword->setValue('${nome}', 'Fulano');
-        $phpword->setValue('${atividade}', 'DivulgaPET');
-        $phpword->setValue('${dia}', '23');
-        $phpword->setValue('${mes}', 'Outubro');
-        $phpword->setValue('${ano}', '2019');
-        $phpword->setValue('${horas}', '2:30');
+        $phpword->setValue('${nome}', $searchedParticipant->name);
+        $phpword->setValue('${atividade}', Activity::find($activity_id)->title);
+        $phpword->setValue('${dias}', $dateStr);
+        $phpword->setValue('${horas}', $duration);
 
-        $filepath = 'certificates/generated/'.$matricula;
+        $filepath = 'certificates/generated/'.$matricula. '_'.$activity_id;
 
         // save the filled document
         $phpword->saveAs($filepath. '.docx');

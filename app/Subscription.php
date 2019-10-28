@@ -9,12 +9,12 @@ class Subscription extends Model
     protected $table = 'subscription';
     protected $fillable = ['activity_id', 'participant_id'];
     
-    public function activities()
+    public function activity()
     {
-        return $this->belongsTo('App\Activity');
+        return $this->belongsTo('App\Activity', 'activity_id');
     }
     
-    public function participants()
+    public function participant()
     {
         return $this->belongsTo('App\Participant');
     }
