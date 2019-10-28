@@ -31,7 +31,8 @@ Route::resource('categories', 'CategoryController');
 Route::get('/agenda', 'HomeController@schedule')->name('schedule');
 //certificados
 Route::get('/certificados', 'HomeController@certificates')->name('certificates');
-Route::get('/certificados/{matricula}', 'HomeController@getCertificate')->name('getCertificate');
+Route::post('/certificados', 'HomeController@listCertificates')->name('listCertificates');
+Route::get('/certificados/{matricula}/{activity_id}', 'HomeController@getCertificate')->name('getCertificate');
 //relatorios
 Route::get('/relatorios', 'HomeController@relatories')->name('relatories');
 //inscrição nas atividades
