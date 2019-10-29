@@ -12,8 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('certificates/index');
 });
+
+//certificates
+Route::get('/certificados', 'HomeController@certificates')->name('certificates');
+Route::post('/certificados', 'HomeController@listCertificates')->name('listCertificates');
+Route::get('/certificados/{matricula}/{activity_id}', 'HomeController@getCertificate')->name('getCertificate');
+//schedule
+Route::get('/agenda', 'HomeController@schedule')->name('schedule');
+Route::get('/getEvents', 'HomeController@getEvents')->name('getEvents');
 
 Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout');
@@ -27,12 +35,6 @@ Route::resource('participantes', 'ParticipantController');
 Route::resource('atividades', 'ActivityController');
 //activities - categories
 Route::resource('categories', 'CategoryController');
-//agenda
-Route::get('/agenda', 'HomeController@schedule')->name('schedule');
-//certificados
-Route::get('/certificados', 'HomeController@certificates')->name('certificates');
-Route::post('/certificados', 'HomeController@listCertificates')->name('listCertificates');
-Route::get('/certificados/{matricula}/{activity_id}', 'HomeController@getCertificate')->name('getCertificate');
 //relatorios
 Route::get('/relatorios', 'HomeController@relatories')->name('relatories');
 //inscrição nas atividades
