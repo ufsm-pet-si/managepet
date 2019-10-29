@@ -36,7 +36,7 @@ Route::resource('atividades', 'ActivityController');
 //activities - categories
 Route::resource('categories', 'CategoryController');
 //relatorios
-Route::get('/relatorios', 'HomeController@relatories')->name('relatories');
+Route::resource('relatorios', 'ReportsController');
 //inscrição nas atividades
 Route::resource('subscription', 'SubscriptionController');
 //presença dos inscritos
