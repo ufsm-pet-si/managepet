@@ -14,7 +14,7 @@ class AddCourseToParticipants extends Migration
     public function up()
     {
         Schema::table('participants', function (Blueprint $table) {
-            $table->string('curso', 20);
+            $table->string('curso', 255);
         });
     }
 

@@ -17,7 +17,7 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->string('title', 100);
             $table->string('speaker')->nullable();
-            $table->string('description', 255)->nullable();
+            $table->longText('description')->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
