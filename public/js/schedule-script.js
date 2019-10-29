@@ -24,25 +24,7 @@ $(function () {
     eventSources: [
 
     ],
-    events: [
-      {
-        title: 'Café com Especialista',
-        start: '2019-02-22T13:30:00',
-        duration: 1
-      },
-      {
-        title: 'English Day',
-        start: '2019-02-20T10:30:00',
-        duration: 1,
-        color: 'red'
-      },
-      {
-        title: 'GAPRO',
-        start: '2019-02-26T14:30:00',
-        duration: 1,
-        color: 'green'
-      }
-    ],
+    events: '/getEvents',
     /* function eventRender: triggered while an event is being rendered. */
     eventRender: function(event) {
     },

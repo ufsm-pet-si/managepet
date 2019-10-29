@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Participant;
 use App\Activity;
+use App\ActivityDay;
 use App\Presence;
 use Session;
 use Illuminate\Http\Request;
@@ -33,11 +34,24 @@ class HomeController extends Controller
         return view('home');
     }
     public function schedule(){
-        return view('schedule/index');
+        return view('schedule.index');
+    }
+
+    public function getEvents() {
+        $activityDays = ActivityDay::with('activity')->get();
+        $events = array();
+        foreach($activityDays as $activityDay) {
+            array_push($events, [
+                "title" => $activityDay->activity->title,
+                "start" => $activityDay->date . 'T' . $activityDay->start_hour,
+                "duration" => $activityDay->duration
+            ]);
+        }
+        return response()->json($events);
     }
 
     public function certificates(){
-        return view('certificates/index');
+        return view('certificates.index');
     }
     
     public function listCertificates(Request $request){
