@@ -45,17 +45,6 @@
                                                             </form>
                                                         </li>
                                                         </div>
-                                                        <div class="col s2">
-                                                            @if($value->type == "Petiano")
-                                                                <li class="action-btn">
-                                                                    <i class="material-icons">person</i>
-                                                                </li>
-                                                            @else
-                                                                <li class="action-btn">
-                                                                    <i class="material-icons" style="color:royalblue ">person</i>
-                                                                </li>
-                                                            @endif
-                                                        </div>
                                                         </ul>
                                                     </td>
                                                     @endif
