@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name') }}</title>
 
+    <link rel="icon" href="{{ asset('images/icon/icon_pet.png') }}" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -42,11 +43,19 @@
         </div>
     @endsection
     @include('_partial.header')
+    @if (!Auth::guest())
     <div id="main">
+    @else
+    <div>
+        <div class="center" style="margin-top:30px;">
+            <img src="{{ asset('images/icon/logo_pet.png') }}" width="350px" alt="logo PET-SI" />
+        </div>
+    @endif
         <div class="wrapper">
             {{--Se for login, não exibir left_sidebar--}}
-            @include('_partial/left_sidebar')
-
+            @if (!Auth::guest())
+                @include('_partial/left_sidebar')
+            @endif
             <section id="content">
                 @yield('content')
             </section>
