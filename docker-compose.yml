@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+        db:
+                env_file:
+                        - .mysql.env
+                image: mysql
+                command: --default-authentication-plugin=mysql_native_password
+                ports:
+                        - "3306:3306"
+                restart: always
+        app:
+                build: .
+                ports:
+                        - "8080:8000"
+                restart: always
+                command: ["bash", "scripts/wait-for-it.sh", "db:3306", "--", "bash", "scripts/run_server.sh"]
+                depends_on:
+                        - db

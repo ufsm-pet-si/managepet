@@ -71,3 +71,24 @@ php artisan migrate
 ## Links úteis:
     * https://laravel.com/docs/5.7/blade
     * 
+
+
+## Nova instalação com Docker (essa documentação precisa ser refinada)
+
+> Para realizar essa configuração, é necessário ter o Docker e o Docker Compose instalados em seu computador. [Comece por aqui][https://www.docker.com/get-started].
+
+Após ter ambas as tecnologias instaladas, clone o repositório com o seguinte comando:
+
+```
+git clone https://github.com/ufsm-pet-si/managepet.git
+```
+
+Com o repositório clonado, entre em sua pasta e execute:
+
+```
+docker-compose up
+```
+
+> Ele irá realizar o build antes de subir os contêineres (isso pode demorar um pouco).
+
+Após isso, basta acessar a URL de seu [servidor local][http://localhost:8080]. Esse projeto ainda precisa ter algumas correções, como remover dependências desnecessárias e utilizar um volume para editar o código do programa em seu computador e ver os efeitos no contêiner.
